@@ -40,16 +40,16 @@
 @class TorrentTableView;
 @class URLSheetWindowController;
 
-typedef enum
+typedef NS_ENUM(int, addType)
 {
     ADD_MANUAL,
     ADD_AUTO,
     ADD_SHOW_OPTIONS,
     ADD_URL,
     ADD_CREATED
-} addType;
+};
 
-@interface Controller : NSObject <NSURLDownloadDelegate, NSUserNotificationCenterDelegate, NSPopoverDelegate, NSSharingServiceDelegate, NSSharingServicePickerDelegate, NSSoundDelegate, NSToolbarDelegate, NSWindowDelegate, QLPreviewPanelDataSource, QLPreviewPanelDelegate, VDKQueueDelegate>
+@interface Controller : NSObject <NSURLDownloadDelegate, NSUserNotificationCenterDelegate, NSPopoverDelegate, NSSharingServiceDelegate, NSSharingServicePickerDelegate, NSSoundDelegate, NSToolbarDelegate, NSWindowDelegate, QLPreviewPanelDataSource, QLPreviewPanelDelegate, VDKQueueDelegate, NSApplicationDelegate>
 {
     tr_session                      * fLib;
 

@@ -46,6 +46,8 @@
 #define MY_NAME "RPC Server"
 #define MY_REALM "Transmission"
 
+extern char const* tr_strcasestr(char const* haystack, char const* needle);
+
 struct tr_rpc_server
 {
     bool isEnabled;

@@ -22,17 +22,19 @@
 
 #import <Cocoa/Cocoa.h>
 
-typedef enum
+typedef NS_ENUM(int, port_status_t)
 {
     PORT_STATUS_CHECKING,
     PORT_STATUS_OPEN,
     PORT_STATUS_CLOSED,
     PORT_STATUS_ERROR
-} port_status_t;
+};
+
+@protocol PortCheckerDelegate;
 
 @interface PortChecker : NSObject
 {
-    id fDelegate;
+    __weak NSObject<PortCheckerDelegate> *fDelegate;
     port_status_t fStatus;
 
     NSURLConnection * fConnection;
@@ -41,9 +43,16 @@ typedef enum
     NSTimer * fTimer;
 }
 
-- (id) initForPort: (NSInteger) portNumber delay: (BOOL) delay withDelegate: (id) delegate;
+- (id) initForPort: (NSInteger) portNumber delay: (BOOL) delay withDelegate: (id<PortCheckerDelegate>) delegate;
 - (void) cancelProbe;
 
 - (port_status_t) status;
+
+@end
+
+@protocol PortCheckerDelegate <NSObject>
+@optional
+
+- (void) portCheckerDidFinishProbing: (PortChecker *) portChecker;
 
 @end

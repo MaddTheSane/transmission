@@ -1842,7 +1842,7 @@ bool trashDataFile(const char * filename, tr_error ** error)
             //quarantine the finished data
             NSString * dataLocation = [[self currentDirectory] stringByAppendingPathComponent: [self name]];
             NSDictionary * quarantineProperties = @{ (NSString *)kLSQuarantineTypeKey : (NSString *)kLSQuarantineTypeOtherDownload };
-            if ([NSApp isOnYosemiteOrBetter])
+            if (@available(macOS 10.10,*))
             {
                 NSURL * dataLocationUrl = [NSURL fileURLWithPath: dataLocation];
                 NSError * error = nil;

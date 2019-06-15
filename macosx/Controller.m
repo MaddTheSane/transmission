@@ -81,11 +81,11 @@
 #define TOOLBAR_QUICKLOOK               @"Toolbar QuickLook"
 #define TOOLBAR_SHARE                   @"Toolbar Share"
 
-typedef enum
+typedef NS_ENUM(NSInteger, toolbarGroupTag)
 {
     TOOLBAR_PAUSE_TAG = 0,
     TOOLBAR_RESUME_TAG = 1
-} toolbarGroupTag;
+};
 
 #define SORT_DATE       @"Date"
 #define SORT_NAME       @"Name"
@@ -96,7 +96,7 @@ typedef enum
 #define SORT_ACTIVITY   @"Activity"
 #define SORT_SIZE       @"Size"
 
-typedef enum
+typedef NS_ENUM(NSInteger, sortTag)
 {
     SORT_ORDER_TAG = 0,
     SORT_DATE_TAG = 1,
@@ -106,13 +106,13 @@ typedef enum
     SORT_TRACKER_TAG = 5,
     SORT_ACTIVITY_TAG = 6,
     SORT_SIZE_TAG = 7
-} sortTag;
+};
 
-typedef enum
+typedef NS_ENUM(NSInteger, sortOrderTag)
 {
     SORT_ASC_TAG = 0,
     SORT_DESC_TAG = 1
-} sortOrderTag;
+};
 
 #define TORRENT_TABLE_VIEW_DATA_TYPE    @"TorrentTableViewDataType"
 
@@ -228,6 +228,10 @@ static void removeKeRangerRansomware()
 
     NSLog(@"OSX.KeRanger.A ransomware removal completed, proceeding to normal operation");
 }
+
+@interface Controller () <SUUpdaterDelegate>
+
+@end
 
 @implementation Controller
 
@@ -664,7 +668,7 @@ static void removeKeRangerRansomware()
 
     //registering the Web UI to Bonjour
     if ([fDefaults boolForKey: @"RPC"] && [fDefaults boolForKey: @"RPCWebDiscovery"])
-        [[BonjourController defaultController] startWithPort: [fDefaults integerForKey: @"RPCPort"]];
+        [[BonjourController defaultController] startWithPort: (int)[fDefaults integerForKey: @"RPCPort"]];
 
     //shamelessly ask for donations
     if ([fDefaults boolForKey: @"WarningDonate"])
@@ -850,10 +854,11 @@ static void removeKeRangerRansomware()
         }
 
         NSRunAlertPanel(NSLocalizedString(@"Torrent download failed", "Download not a torrent -> title"),
-            [NSString stringWithFormat: NSLocalizedString(@"It appears that the file \"%@\" from %@ is not a torrent file.",
-            "Download not a torrent -> message"), suggestedName,
-            [[[[download request] URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding]],
-            NSLocalizedString(@"OK", "Download not a torrent -> button"), nil, nil);
+            NSLocalizedString(@"It appears that the file \"%@\" from %@ is not a torrent file.",
+                              "Download not a torrent -> message"),
+            NSLocalizedString(@"OK", "Download not a torrent -> button"), nil, nil,
+            suggestedName,
+            [[[[download request] URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding]);
     }
     else
         [download setDestination: [NSTemporaryDirectory() stringByAppendingPathComponent: [suggestedName lastPathComponent]]
@@ -869,10 +874,10 @@ static void removeKeRangerRansomware()
 - (void) download: (NSURLDownload *) download didFailWithError: (NSError *) error
 {
     NSRunAlertPanel(NSLocalizedString(@"Torrent download failed", "Torrent download error -> title"),
-        [NSString stringWithFormat: NSLocalizedString(@"The torrent could not be downloaded from %@: %@.",
-        "Torrent download failed -> message"),
+        NSLocalizedString(@"The torrent could not be downloaded from %@: %@.",
+                          "Torrent download failed -> message"), NSLocalizedString(@"OK", "Torrent download failed -> button"), nil, nil,
         [[[[download request] URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding],
-        [error localizedDescription]], NSLocalizedString(@"OK", "Torrent download failed -> button"), nil, nil);
+        [error localizedDescription]);
 
     [fPendingTorrentDownloads removeObjectForKey: [[download request] URL]];
     if ([fPendingTorrentDownloads count] == 0)

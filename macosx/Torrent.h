@@ -27,10 +27,10 @@
 
 @class FileListNode;
 
-typedef enum {
+typedef NS_ENUM(NSInteger, TorrentDeterminationType) {
     TorrentDeterminationAutomatic = 0,
     TorrentDeterminationUserSpecified
-} TorrentDeterminationType;
+};
 
 #define kTorrentDidChangeGroupNotification @"TorrentDidChangeGroup"
 

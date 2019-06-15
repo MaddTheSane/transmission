@@ -44,7 +44,7 @@
 
 #define INVALID -99
 
-typedef enum
+typedef NS_ENUM(NSInteger, tabTag)
 {
     TAB_GENERAL_TAG = 0,
     TAB_ACTIVITY_TAG = 1,
@@ -52,7 +52,7 @@ typedef enum
     TAB_PEERS_TAG = 3,
     TAB_FILE_TAG = 4,
     TAB_OPTIONS_TAG = 5
-} tabTag;
+};
 
 @interface InfoWindowController (Private)
 
