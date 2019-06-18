@@ -25,8 +25,9 @@
 #import "NSStringAdditions.h"
 
 @implementation TrackerNode
-
-#warning remove ivars in header when 64-bit only (or it compiles in 32-bit mode)
+{
+    tr_tracker_stat fStat;
+}
 @synthesize torrent = fTorrent;
 
 - (id) initWithTrackerStat: (tr_tracker_stat *) stat torrent: (Torrent *) torrent
