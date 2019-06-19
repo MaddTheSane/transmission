@@ -10,9 +10,9 @@
 
 @interface ShareTorrentFileHelper : NSObject
 
-+ (ShareTorrentFileHelper *) sharedHelper;
+@property (class, readonly, strong) ShareTorrentFileHelper *sharedHelper;
 
-- (NSArray *) shareTorrentURLs;
-- (NSArray *) menuItems;
+- (NSArray<NSURL*> *) shareTorrentURLs;
+- (NSArray<NSMenuItem*> *) menuItems;
 
 @end

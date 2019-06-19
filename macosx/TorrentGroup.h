@@ -22,20 +22,22 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class Torrent;
+
 @interface TorrentGroup : NSObject
 {
     NSInteger fGroup;
-    NSMutableArray * fTorrents;
+    NSMutableArray<Torrent*> * fTorrents;
 }
 
 - (id) initWithGroup: (NSInteger) group;
 
-- (NSInteger) groupIndex;
-- (NSInteger) groupOrderValue;
-- (NSMutableArray *) torrents;
+@property (readonly) NSInteger groupIndex;
+@property (readonly) NSInteger groupOrderValue;
+@property (readonly, strong) NSMutableArray<Torrent*> *torrents;
 
-- (CGFloat) ratio;
-- (CGFloat) uploadRate;
-- (CGFloat) downloadRate;
+@property (readonly) CGFloat ratio;
+@property (readonly) CGFloat uploadRate;
+@property (readonly) CGFloat downloadRate;
 
 @end
