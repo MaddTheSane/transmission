@@ -118,8 +118,9 @@ BlocklistDownloaderViewController * fBLViewController = nil;
 
     [alert setInformativeText: error];
 
-    [alert beginSheetModalForWindow: [fPrefsController window] modalDelegate: self
-        didEndSelector: @selector(failureSheetClosed:returnCode:contextInfo:) contextInfo: nil];
+    [alert beginSheetModalForWindow: [fPrefsController window] completionHandler: ^(NSModalResponse returnCode) {
+        [self failureSheetClosed: alert returnCode: returnCode contextInfo: nil];
+    }];
 }
 
 - (id) initWithPrefsController: (PrefsController *) prefsController

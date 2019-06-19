@@ -145,8 +145,9 @@ tr_session * fLib = NULL;
     [alert addButtonWithTitle: NSLocalizedString(@"Cancel", "Stats reset -> button")];
     [alert setShowsSuppressionButton: YES];
 
-    [alert beginSheetModalForWindow: [self window] modalDelegate: self
-        didEndSelector: @selector(resetSheetClosed:returnCode:contextInfo:) contextInfo: nil];
+    [alert beginSheetModalForWindow: [self window] completionHandler: ^(NSModalResponse returnCode) {
+        [self resetSheetClosed: alert returnCode: returnCode contextInfo: nil];
+    }];
 }
 
 - (NSString *) windowFrameAutosaveName

@@ -27,8 +27,8 @@
     NSArray * fIdentifiers;
 }
 
-- (void) setIdentifiers: (NSArray *) identifiers;
+- (void) setIdentifiers: (NSArray<NSToolbarItemIdentifier> *) identifiers;
 
-- (void) createMenu: (NSArray *) labels;
+- (void) createMenu: (NSArray<NSString*> *) labels;
 
 @end

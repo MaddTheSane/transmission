@@ -229,6 +229,10 @@ static void removeKeRangerRansomware()
     NSLog(@"OSX.KeRanger.A ransomware removal completed, proceeding to normal operation");
 }
 
+@interface Controller () <SUUpdaterDelegate>
+
+@end
+
 @implementation Controller
 
 #warning remove ivars in header when 64-bit only (or it compiles in 32-bit mode)
@@ -850,10 +854,10 @@ static void removeKeRangerRansomware()
         }
 
         NSRunAlertPanel(NSLocalizedString(@"Torrent download failed", "Download not a torrent -> title"),
-            [NSString stringWithFormat: NSLocalizedString(@"It appears that the file \"%@\" from %@ is not a torrent file.",
-            "Download not a torrent -> message"), suggestedName,
-            [[[[download request] URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding]],
-            NSLocalizedString(@"OK", "Download not a torrent -> button"), nil, nil);
+            NSLocalizedString(@"It appears that the file \"%@\" from %@ is not a torrent file.",
+            "Download not a torrent -> message"),
+            NSLocalizedString(@"OK", "Download not a torrent -> button"), nil, nil, suggestedName,
+            [[[[download request] URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding]);
     }
     else
         [download setDestination: [NSTemporaryDirectory() stringByAppendingPathComponent: [suggestedName lastPathComponent]]
@@ -869,10 +873,10 @@ static void removeKeRangerRansomware()
 - (void) download: (NSURLDownload *) download didFailWithError: (NSError *) error
 {
     NSRunAlertPanel(NSLocalizedString(@"Torrent download failed", "Torrent download error -> title"),
-        [NSString stringWithFormat: NSLocalizedString(@"The torrent could not be downloaded from %@: %@.",
-        "Torrent download failed -> message"),
+        NSLocalizedString(@"The torrent could not be downloaded from %@: %@.",
+                          "Torrent download failed -> message"), NSLocalizedString(@"OK", "Torrent download failed -> button"), nil, nil,
         [[[[download request] URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding],
-        [error localizedDescription]], NSLocalizedString(@"OK", "Torrent download failed -> button"), nil, nil);
+        [error localizedDescription]);
 
     [fPendingTorrentDownloads removeObjectForKey: [[download request] URL]];
     if ([fPendingTorrentDownloads count] == 0)

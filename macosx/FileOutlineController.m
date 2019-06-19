@@ -51,7 +51,7 @@ typedef enum
 
 - (NSMenu *) menu;
 
-- (NSUInteger) findFileNode: (FileListNode *) node inList: (NSArray *) list atIndexes: (NSIndexSet *) range currentParent: (FileListNode *) currentParent finalParent: (FileListNode **) parent;
+- (NSUInteger) findFileNode: (FileListNode *) node inList: (NSArray *) list atIndexes: (NSIndexSet *) range currentParent: (FileListNode *) currentParent finalParent: (FileListNode *__strong*) parent;
 
 @end
 
@@ -339,7 +339,7 @@ typedef enum
     NSIndexSet * indexSet = [fOutline selectedRowIndexes];
     NSMutableIndexSet * itemIndexes = [NSMutableIndexSet indexSet];
     for (NSInteger i = [indexSet firstIndex]; i != NSNotFound; i = [indexSet indexGreaterThanIndex: i])
-        [itemIndexes addIndexes: [[fOutline itemAtRow: i] indexes]];
+        [itemIndexes addIndexes: [(FileListNode*)[fOutline itemAtRow: i] indexes]];
 
     [fTorrent setFileCheckState: state forIndexes: itemIndexes];
     [fOutline setNeedsDisplay: YES];
@@ -350,7 +350,7 @@ typedef enum
     NSIndexSet * indexSet = [fOutline selectedRowIndexes];
     NSMutableIndexSet * itemIndexes = [NSMutableIndexSet indexSet];
     for (NSInteger i = [indexSet firstIndex]; i != NSNotFound; i = [indexSet indexGreaterThanIndex: i])
-        [itemIndexes addIndexes: [[fOutline itemAtRow: i] indexes]];
+        [itemIndexes addIndexes: [(FileListNode*)[fOutline itemAtRow: i] indexes]];
 
     [fTorrent setFileCheckState: NSOnState forIndexes: itemIndexes];
 
@@ -393,7 +393,7 @@ typedef enum
     NSIndexSet * indexSet = [fOutline selectedRowIndexes];
     NSMutableIndexSet * itemIndexes = [NSMutableIndexSet indexSet];
     for (NSInteger i = [indexSet firstIndex]; i != NSNotFound; i = [indexSet indexGreaterThanIndex: i])
-        [itemIndexes addIndexes: [[fOutline itemAtRow: i] indexes]];
+        [itemIndexes addIndexes: [(FileListNode*)[fOutline itemAtRow: i] indexes]];
 
     [fTorrent setFilePriority: priority forIndexes: itemIndexes];
     [fOutline setNeedsDisplay: YES];
@@ -466,7 +466,7 @@ typedef enum
         NSIndexSet * indexSet = [fOutline selectedRowIndexes];
         NSMutableIndexSet * itemIndexes = [NSMutableIndexSet indexSet];
         for (NSInteger i = [indexSet firstIndex]; i != NSNotFound; i = [indexSet indexGreaterThanIndex: i])
-            [itemIndexes addIndexes: [[fOutline itemAtRow: i] indexes]];
+            [itemIndexes addIndexes: [(FileListNode*)[fOutline itemAtRow: i] indexes]];
 
         NSInteger state = ([menuItem tag] == FILE_CHECK_TAG) ? NSOnState : NSOffState;
         return [fTorrent checkForFiles: itemIndexes] != state && [fTorrent canChangeDownloadCheckForFiles: itemIndexes];
@@ -480,7 +480,7 @@ typedef enum
         NSIndexSet * indexSet = [fOutline selectedRowIndexes];
         NSMutableIndexSet * itemIndexes = [NSMutableIndexSet indexSet];
         for (NSInteger i = [indexSet firstIndex]; i != NSNotFound; i = [indexSet indexGreaterThanIndex: i])
-            [itemIndexes addIndexes: [[fOutline itemAtRow: i] indexes]];
+            [itemIndexes addIndexes: [(FileListNode*)[fOutline itemAtRow: i] indexes]];
 
         return [fTorrent canChangeDownloadCheckForFiles: itemIndexes];
     }
@@ -512,7 +512,7 @@ typedef enum
         BOOL current = NO, canChange = NO;
         for (NSInteger i = [indexSet firstIndex]; i != NSNotFound; i = [indexSet indexGreaterThanIndex: i])
         {
-            NSIndexSet * fileIndexSet = [[fOutline itemAtRow: i] indexes];
+            NSIndexSet * fileIndexSet = [(FileListNode*)[fOutline itemAtRow: i] indexes];
             if (![fTorrent canChangeDownloadCheckForFiles: fileIndexSet])
                 continue;
 
@@ -608,7 +608,7 @@ typedef enum
     return menu;
 }
 
-- (NSUInteger) findFileNode: (FileListNode *) node inList: (NSArray *) list atIndexes: (NSIndexSet *) indexes currentParent: (FileListNode *) currentParent finalParent: (FileListNode **) parent
+- (NSUInteger) findFileNode: (FileListNode *) node inList: (NSArray *) list atIndexes: (NSIndexSet *) indexes currentParent: (FileListNode *) currentParent finalParent: (FileListNode *__strong*) parent
 {
     NSAssert(![node isFolder], @"Looking up folder node!");
 

@@ -27,6 +27,6 @@
     NSUInteger fCount;
 }
 
-- (void) setCount: (NSUInteger) count;
+@property (nonatomic) NSUInteger count;
 
 @end

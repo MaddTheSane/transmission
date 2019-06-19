@@ -27,7 +27,7 @@
 
 - (void) setIdentifiers: (NSArray *) identifiers
 {
-    fIdentifiers = identifiers;
+    fIdentifiers = [identifiers copy];
 }
 
 - (void) validate

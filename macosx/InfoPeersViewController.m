@@ -33,7 +33,7 @@
 #define ANIMATION_ID_KEY @"animationId"
 #define WEB_SEED_ANIMATION_ID @"webSeed"
 
-@interface InfoPeersViewController ()
+@interface InfoPeersViewController () <CAAnimationDelegate>
 
 - (void) setupInfo;
 
