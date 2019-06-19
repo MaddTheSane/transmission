@@ -24,7 +24,7 @@
 #import "DragOverlayView.h"
 #import "NSStringAdditions.h"
 
-@interface DragOverlayWindow (Private)
+@interface DragOverlayWindow ()
 
 - (void) resizeWindow;
 
@@ -179,10 +179,6 @@
     if ([self alphaValue] > 0.0)
         [fFadeOutAnimation startAnimation];
 }
-
-@end
-
-@implementation DragOverlayWindow (Private)
 
 - (void) resizeWindow
 {

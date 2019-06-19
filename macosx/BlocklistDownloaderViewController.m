@@ -25,7 +25,7 @@
 #import "PrefsController.h"
 #import "NSStringAdditions.h"
 
-@interface BlocklistDownloaderViewController (Private)
+@interface BlocklistDownloaderViewController ()
 
 - (id) initWithPrefsController: (PrefsController *) prefsController;
 - (void) startDownload;
@@ -121,10 +121,6 @@ BlocklistDownloaderViewController * fBLViewController = nil;
     [alert beginSheetModalForWindow: [fPrefsController window] modalDelegate: self
         didEndSelector: @selector(failureSheetClosed:returnCode:contextInfo:) contextInfo: nil];
 }
-
-@end
-
-@implementation BlocklistDownloaderViewController (Private)
 
 - (id) initWithPrefsController: (PrefsController *) prefsController
 {

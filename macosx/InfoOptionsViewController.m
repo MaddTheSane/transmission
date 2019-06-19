@@ -34,7 +34,7 @@
 
 #define INVALID -99
 
-@interface InfoOptionsViewController (Private)
+@interface InfoOptionsViewController ()
 
 - (void) setupInfo;
 - (void) setGlobalLabels;
@@ -474,10 +474,6 @@
     }
     return NO;
 }
-
-@end
-
-@implementation InfoOptionsViewController (Private)
 
 - (void) setupInfo
 {

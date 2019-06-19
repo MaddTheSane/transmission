@@ -34,7 +34,7 @@
 
 #define ETA_IDLE_DISPLAY_SEC (2*60)
 
-@interface Torrent (Private)
+@interface Torrent ()
 
 - (id) initWithPath: (NSString *) path hash: (NSString *) hashString torrentStruct: (tr_torrent *) torrentStruct
         magnetAddress: (NSString *) magnetAddress lib: (tr_session *) lib
@@ -1636,10 +1636,6 @@ bool trashDataFile(const char * filename, tr_error ** error)
     NSString * location = [self dataLocation];
     return location ? [NSURL fileURLWithPath: location] : nil;
 }
-
-@end
-
-@implementation Torrent (Private)
 
 - (id) initWithPath: (NSString *) path hash: (NSString *) hashString torrentStruct: (tr_torrent *) torrentStruct
         magnetAddress: (NSString *) magnetAddress lib: (tr_session *) lib

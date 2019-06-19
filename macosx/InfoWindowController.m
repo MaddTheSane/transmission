@@ -54,7 +54,7 @@ typedef enum
     TAB_OPTIONS_TAG = 5
 } tabTag;
 
-@interface InfoWindowController (Private)
+@interface InfoWindowController ()
 
 - (void) resetInfo;
 - (void) resetInfoForTorrent: (NSNotification *) notification;
@@ -382,10 +382,6 @@ typedef enum
 {
     return [fFileViewController quickLookSourceFrameForPreviewItem: item];
 }
-
-@end
-
-@implementation InfoWindowController (Private)
 
 - (void) resetInfo
 {

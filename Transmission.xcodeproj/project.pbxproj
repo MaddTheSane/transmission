@@ -1213,8 +1213,8 @@
 				A2661D3B12D0E51B004F69D5 /* FilterBarView.m */,
 				A2ED7D8D0CEF431B00970975 /* FilterButton.h */,
 				A2ED7D8E0CEF431B00970975 /* FilterButton.m */,
-				A2C89D5F0CFCBF57004CC2BC /* ButtonToolbarItem.m */,
 				A28E1DDF0CFFD8EC00E16385 /* ButtonToolbarItem.h */,
+				A2C89D5F0CFCBF57004CC2BC /* ButtonToolbarItem.m */,
 				A225A4BE187E369C00CDE823 /* ShareToolbarItem.h */,
 				A225A4BF187E369C00CDE823 /* ShareToolbarItem.m */,
 				A2B5B4E71880665E0071A66A /* ShareTorrentFileHelper.h */,
@@ -2175,6 +2175,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
+				English,
 				en,
 				es,
 				fr,

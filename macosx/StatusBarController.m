@@ -38,7 +38,7 @@ typedef enum
     STATUS_TRANSFER_SESSION_TAG = 3
 } statusTag;
 
-@interface StatusBarController (Private)
+@interface StatusBarController ()
 
 - (void) resizeStatusButton;
 
@@ -242,10 +242,6 @@ typedef enum
 
     return YES;
 }
-
-@end
-
-@implementation StatusBarController (Private)
 
 - (void) resizeStatusButton
 {

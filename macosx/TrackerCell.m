@@ -36,7 +36,7 @@
 #define PADDING_BETWEEN_LINES_ON_SAME_LINE 4.0
 #define COUNT_WIDTH 40.0
 
-@interface TrackerCell (Private)
+@interface TrackerCell ()
 
 - (NSImage *) favIcon;
 - (void) loadTrackerIcon: (NSString *) baseAddress;
@@ -169,10 +169,6 @@ NSMutableSet * fTrackerIconLoading;
                                     withRightRect: downloadedLabelRect inBounds: cellFrame];
     [lastScrapeString drawInRect: lastScrapeRect];
 }
-
-@end
-
-@implementation TrackerCell (Private)
 
 - (NSImage *) favIcon
 {

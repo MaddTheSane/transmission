@@ -33,7 +33,7 @@
 #define ANIMATION_ID_KEY @"animationId"
 #define WEB_SEED_ANIMATION_ID @"webSeed"
 
-@interface InfoPeersViewController (Private)
+@interface InfoPeersViewController ()
 
 - (void) setupInfo;
 
@@ -451,10 +451,6 @@
 
     [[fWebSeedTable enclosingScrollView] setHidden: finished && fWebSeedTableTopConstraint.constant < 0];
 }
-
-@end
-
-@implementation InfoPeersViewController (Private)
 
 - (void) setupInfo
 {
