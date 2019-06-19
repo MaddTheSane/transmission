@@ -47,7 +47,7 @@ typedef enum
     FILE_PRIORITY_LOW_TAG
 } filePriorityMenuTag;
 
-@interface FileOutlineController (Private)
+@interface FileOutlineController ()
 
 - (NSMenu *) menu;
 
@@ -535,10 +535,6 @@ typedef enum
 
     return YES;
 }
-
-@end
-
-@implementation FileOutlineController (Private)
 
 - (NSMenu *) menu
 {
