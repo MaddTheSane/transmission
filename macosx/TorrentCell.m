@@ -286,30 +286,11 @@
     [controlView addTrackingArea: area];
 }
 
-- (void) setHover: (BOOL) hover
-{
-    fHover = hover;
-}
-
-- (void) setControlHover: (BOOL) hover
-{
-    fHoverControl = hover;
-}
-
-- (void) setRevealHover: (BOOL) hover
-{
-    fHoverReveal = hover;
-}
-
-- (void) setActionHover: (BOOL) hover
-{
-    fHoverAction = hover;
-}
-
-- (void) setActionPushed: (BOOL) pushed
-{
-    fMouseDownActionButton = pushed;
-}
+@synthesize hover = fHover;
+@synthesize controlHover = fHoverControl;
+@synthesize revealHover = fHoverReveal;
+@synthesize actionHover = fHoverAction;
+@synthesize actionPushed = fMouseDownActionButton;
 
 - (void) drawInteriorWithFrame: (NSRect) cellFrame inView: (NSView *) controlView
 {
