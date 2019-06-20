@@ -56,10 +56,7 @@
     [fTimer invalidate];
 }
 
-- (port_status_t) status
-{
-    return fStatus;
-}
+@synthesize status = fStatus;
 
 - (void) cancelProbe
 {

@@ -44,6 +44,6 @@ typedef enum
 - (id) initForPort: (NSInteger) portNumber delay: (BOOL) delay withDelegate: (id) delegate;
 - (void) cancelProbe;
 
-- (port_status_t) status;
+@property (readonly) port_status_t status;
 
 @end
