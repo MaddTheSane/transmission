@@ -146,7 +146,7 @@ tr_session * fLib = NULL;
     [alert setShowsSuppressionButton: YES];
 
     [alert beginSheetModalForWindow: [self window] completionHandler: ^(NSModalResponse returnCode) {
-        [self resetSheetClosed:alert returnCode:returnCode contextInfo:nil];
+        [self resetSheetClosed: alert returnCode: returnCode contextInfo: nil];
     }];
 }
 

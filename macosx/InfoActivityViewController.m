@@ -32,7 +32,7 @@
 #define PIECES_CONTROL_PROGRESS 0
 #define PIECES_CONTROL_AVAILABLE 1
 
-@interface InfoActivityViewController (Private)
+@interface InfoActivityViewController ()
 
 - (void) setupInfo;
 
@@ -228,10 +228,6 @@
 {
     [fPiecesView clearView];
 }
-
-@end
-
-@implementation InfoActivityViewController (Private)
 
 - (void) setupInfo
 {

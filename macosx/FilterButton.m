@@ -24,6 +24,7 @@
 #import "NSStringAdditions.h"
 
 @implementation FilterButton
+@synthesize count = fCount;
 
 - (id) initWithCoder: (NSCoder *) coder
 {

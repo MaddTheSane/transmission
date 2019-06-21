@@ -57,7 +57,7 @@
 
 #define WEBUI_URL   @"http://localhost:%ld/"
 
-@interface PrefsController (Private)
+@interface PrefsController ()
 
 - (void) setPrefView: (id) sender;
 
@@ -677,7 +677,7 @@
 + (NSInteger) dateToTimeSum: (NSDate *) date
 {
     NSCalendar * calendar = [NSCalendar currentCalendar];
-    NSDateComponents * components = [calendar components: NSHourCalendarUnit | NSMinuteCalendarUnit fromDate: date];
+    NSDateComponents * components = [calendar components: NSCalendarUnitHour | NSCalendarUnitMinute fromDate: date];
     return [components hour] * 60 + [components minute];
 }
 
@@ -1382,10 +1382,6 @@
     //reload global settings in inspector
     [[NSNotificationCenter defaultCenter] postNotificationName: @"UpdateGlobalOptions" object: nil];
 }
-
-@end
-
-@implementation PrefsController (Private)
 
 - (void) setPrefView: (id) sender
 {

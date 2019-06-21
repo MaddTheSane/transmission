@@ -855,9 +855,8 @@ static void removeKeRangerRansomware()
 
         NSRunAlertPanel(NSLocalizedString(@"Torrent download failed", "Download not a torrent -> title"),
             NSLocalizedString(@"It appears that the file \"%@\" from %@ is not a torrent file.",
-                              "Download not a torrent -> message"),
-            NSLocalizedString(@"OK", "Download not a torrent -> button"), nil, nil,
-            suggestedName,
+            "Download not a torrent -> message"),
+            NSLocalizedString(@"OK", "Download not a torrent -> button"), nil, nil, suggestedName,
             [[[[download request] URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding]);
     }
     else

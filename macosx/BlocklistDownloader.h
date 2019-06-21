@@ -44,8 +44,8 @@ typedef NS_ENUM(int, blocklistDownloadState)
     blocklistDownloadState fState;
 }
 
-+ (BlocklistDownloader *) downloader; //starts download if not already occuring
-+ (BOOL) isRunning;
+@property (class, readonly, strong) BlocklistDownloader * downloader; //starts download if not already occuring
+@property (class, readonly, getter=isRunning) BOOL running;
 
 - (void) setViewController: (BlocklistDownloaderViewController *) viewController;
 

@@ -38,10 +38,10 @@
 
 - (void) addTrackingAreasForView: (NSView *) controlView inRect: (NSRect) cellFrame withUserInfo: (NSDictionary *) userInfo
             mouseLocation: (NSPoint) mouseLocation;
-- (void) setHover: (BOOL) hover;
-- (void) setControlHover: (BOOL) hover;
-- (void) setRevealHover: (BOOL) hover;
-- (void) setActionHover: (BOOL) hover;
-- (void) setActionPushed: (BOOL) pushed;
+@property BOOL hover;
+@property BOOL controlHover;
+@property BOOL revealHover;
+@property BOOL actionHover;
+@property BOOL actionPushed;
 
 @end

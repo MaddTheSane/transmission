@@ -24,7 +24,6 @@ typedef void (^CompletionBlock)(BOOL);
 
 @implementation FileRenameSheetController
 
-#warning remove ivars in header when 64-bit only (or it compiles in 32-bit mode)
 @synthesize torrent = _torrent;
 @synthesize node = _node;
 @synthesize completionHandler = _completionHandler;
@@ -66,7 +65,7 @@ typedef void (^CompletionBlock)(BOOL);
     FileRenameSheetController * renamer = (__bridge_transfer FileRenameSheetController *)(contextInfo);
     NSParameterAssert([renamer isKindOfClass:[FileRenameSheetController class]]);
 
-    renamer.completionHandler(returnCode == NSOKButton);
+    renamer.completionHandler(returnCode == NSModalResponseOK);
 
     [sheet orderOut: self];
 }
@@ -114,7 +113,7 @@ typedef void (^CompletionBlock)(BOOL);
 {
     void (^completionHandler)(BOOL) = ^(BOOL didRename) {
         if (didRename)
-            [NSApp endSheet: [self window] returnCode: NSOKButton];
+            [NSApp endSheet: [self window] returnCode: NSModalResponseOK];
         else
         {
             #warning more thorough error
@@ -130,7 +129,7 @@ typedef void (^CompletionBlock)(BOOL);
 
 - (IBAction) cancelRename: (id) sender
 {
-    [NSApp endSheet: [self window] returnCode: NSCancelButton];
+    [NSApp endSheet: [self window] returnCode: NSModalResponseCancel];
 }
 
 - (void) controlTextDidChange: (NSNotification *) notification

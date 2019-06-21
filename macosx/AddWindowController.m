@@ -34,7 +34,7 @@
 #define POPUP_PRIORITY_NORMAL 1
 #define POPUP_PRIORITY_LOW 2
 
-@interface AddWindowController (Private)
+@interface AddWindowController ()
 
 - (void) updateFiles;
 
@@ -200,8 +200,9 @@
         [alert addButtonWithTitle: NSLocalizedString(@"Add", "Add torrent -> same name -> button")];
         [alert setShowsSuppressionButton: YES];
 
-        [alert beginSheetModalForWindow: [self window] modalDelegate: self
-            didEndSelector: @selector(sameNameAlertDidEnd:returnCode:contextInfo:) contextInfo: nil];
+        [alert beginSheetModalForWindow: [self window] completionHandler: ^(NSModalResponse returnCode) {
+            [self sameNameAlertDidEnd: alert returnCode: returnCode contextInfo: nil];
+        }];
     }
     else
         [self confirmAdd];
@@ -299,10 +300,6 @@
         [fGroupPopUp selectItemWithTag: fGroupValue];
     }
 }
-
-@end
-
-@implementation AddWindowController (Private)
 
 - (void) updateFiles
 {

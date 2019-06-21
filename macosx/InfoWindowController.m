@@ -54,7 +54,7 @@ typedef NS_ENUM(NSInteger, tabTag)
     TAB_OPTIONS_TAG = 5
 };
 
-@interface InfoWindowController (Private)
+@interface InfoWindowController ()
 
 - (void) resetInfo;
 - (void) resetInfoForTorrent: (NSNotification *) notification;
@@ -382,10 +382,6 @@ typedef NS_ENUM(NSInteger, tabTag)
 {
     return [fFileViewController quickLookSourceFrameForPreviewItem: item];
 }
-
-@end
-
-@implementation InfoWindowController (Private)
 
 - (void) resetInfo
 {

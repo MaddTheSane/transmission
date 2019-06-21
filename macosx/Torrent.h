@@ -80,8 +80,7 @@ typedef NS_ENUM(NSInteger, TorrentDeterminationType) {
 
 - (void) getAvailability: (int8_t *) tab size: (NSInteger) size;
 - (void) getAmountFinished: (float *) tab size: (NSInteger) size;
-- (NSIndexSet *) previousFinishedPieces;
-- (void) setPreviousFinishedPieces: (NSIndexSet *) indexes;
+@property (copy) NSIndexSet *previousFinishedPieces;
 
 - (void) update;
 
@@ -92,38 +91,31 @@ typedef NS_ENUM(NSInteger, TorrentDeterminationType) {
 - (void) sleep;
 - (void) wakeUp;
 
-- (NSInteger) queuePosition;
-- (void) setQueuePosition: (NSUInteger) index;
+@property NSInteger queuePosition;
 
 - (void) manualAnnounce;
-- (BOOL) canManualAnnounce;
+@property (readonly) BOOL canManualAnnounce;
 
 - (void) resetCache;
 
-- (BOOL) isMagnet;
+@property (readonly, getter=isMagnet) BOOL magnet;
 - (NSString *) magnetLink;
 
-- (CGFloat) ratio;
-- (tr_ratiolimit) ratioSetting;
-- (void) setRatioSetting: (tr_ratiolimit) setting;
-- (CGFloat) ratioLimit;
-- (void) setRatioLimit: (CGFloat) limit;
+@property (readonly) CGFloat ratio;
+@property tr_ratiolimit ratioSetting;
+@property (nonatomic) CGFloat ratioLimit;
 - (CGFloat) progressStopRatio;
 
-- (tr_idlelimit) idleSetting;
-- (void) setIdleSetting: (tr_idlelimit) setting;
-- (NSUInteger) idleLimitMinutes;
-- (void) setIdleLimitMinutes: (NSUInteger) limit;
+@property tr_idlelimit idleSetting;
+@property NSUInteger idleLimitMinutes;
 
 - (BOOL) usesSpeedLimit: (BOOL) upload;
 - (void) setUseSpeedLimit: (BOOL) use upload: (BOOL) upload;
 - (NSInteger) speedLimit: (BOOL) upload;
 - (void) setSpeedLimit: (NSInteger) limit upload: (BOOL) upload;
-- (BOOL) usesGlobalSpeedLimit;
-- (void) setUseGlobalSpeedLimit: (BOOL) use;
+@property (setter=setUseGlobalSpeedLimit:) BOOL usesGlobalSpeedLimit;
 
-- (void) setMaxPeerConnect: (uint16_t) count;
-- (uint16_t) maxPeerConnect;
+@property uint16_t maxPeerConnect;
 
 @property (nonatomic) BOOL removeWhenFinishSeeding;
 
@@ -246,7 +238,7 @@ typedef NS_ENUM(NSInteger, TorrentDeterminationType) {
 - (NSInteger) secondsSeeding;
 
 - (NSInteger) stalledMinutes;
-- (BOOL) isStalled;
+@property (readonly, getter=isStalled) BOOL stalled;
 
 - (void) updateTimeMachineExclude;
 

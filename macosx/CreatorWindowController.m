@@ -31,7 +31,7 @@
 #define TRACKER_ADD_TAG 0
 #define TRACKER_REMOVE_TAG 1
 
-@interface CreatorWindowController (Private)
+@interface CreatorWindowController ()
 
 + (NSURL *) chooseFile;
 
@@ -288,8 +288,9 @@ NSMutableSet *creatorWindowControllerSet = nil;
         [alert addButtonWithTitle: NSLocalizedString(@"Cancel", "Create torrent -> blank address -> button")];
         [alert setShowsSuppressionButton: YES];
 
-        [alert beginSheetModalForWindow: [self window] modalDelegate: self
-            didEndSelector: @selector(createBlankAddressAlertDidEnd:returnCode:contextInfo:) contextInfo: nil];
+        [alert beginSheetModalForWindow: [self window] completionHandler:^(NSModalResponse returnCode) {
+            [self createBlankAddressAlertDidEnd: alert returnCode: returnCode contextInfo: nil];
+        }];
     }
     else
         [self createReal];
@@ -434,10 +435,6 @@ NSMutableSet *creatorWindowControllerSet = nil;
         NSBeep();
 }
 
-@end
-
-@implementation CreatorWindowController (Private)
-
 - (void) updateLocationField
 {
     NSString * pathString = [fLocation path];
@@ -492,7 +489,9 @@ NSMutableSet *creatorWindowControllerSet = nil;
                     [[fLocation URLByDeletingLastPathComponent] path]]];
         [alert setAlertStyle: NSWarningAlertStyle];
 
-        [alert beginSheetModalForWindow: [self window] modalDelegate: self didEndSelector: nil contextInfo: nil];
+        [alert beginSheetModalForWindow: [self window] completionHandler: ^(NSModalResponse returnCode) {
+            //Do nothing?
+        }];
         return;
     }
 
@@ -513,7 +512,9 @@ NSMutableSet *creatorWindowControllerSet = nil;
                     pathComponents[count-1], pathComponents[count-2]]];
         [alert setAlertStyle: NSWarningAlertStyle];
 
-        [alert beginSheetModalForWindow: [self window] modalDelegate: self didEndSelector: nil contextInfo: nil];
+        [alert beginSheetModalForWindow: [self window] completionHandler: ^(NSModalResponse returnCode) {
+            //Do nothing?
+        }];
         return;
     }
 
@@ -586,8 +587,9 @@ NSMutableSet *creatorWindowControllerSet = nil;
                     [alert setInformativeText: [NSString stringWithFormat: @"%@ (%d)",
                         NSLocalizedString(@"An unknown error has occurred.", "Create torrent -> failed -> warning"), fInfo->result]];
 
-                [alert beginSheetModalForWindow: [self window] modalDelegate: self
-                    didEndSelector: @selector(failureSheetClosed:returnCode:contextInfo:) contextInfo: nil];
+                [alert beginSheetModalForWindow: [self window] completionHandler: ^(NSModalResponse returnCode) {
+                    [self failureSheetClosed: alert returnCode: returnCode contextInfo: nil];
+                }];
         }
     }
     else

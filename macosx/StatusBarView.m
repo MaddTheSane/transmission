@@ -25,7 +25,7 @@
 #import "StatusBarView.h"
 #import "NSApplicationAdditions.h"
 
-@interface StatusBarView (Private)
+@interface StatusBarView ()
 
 - (void) reload;
 
@@ -154,10 +154,6 @@
         }
     }
 }
-
-@end
-
-@implementation StatusBarView (Private)
 
 - (void) reload
 {

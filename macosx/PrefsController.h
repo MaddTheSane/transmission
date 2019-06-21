@@ -78,7 +78,7 @@
 - (void) updatePortStatus;
 - (void) portCheckerDidFinishProbing: (PortChecker *) portChecker;
 
-- (NSArray *) sounds;
+- (NSArray<NSString*> *) sounds;
 - (void) setSound: (id) sender;
 
 - (void) setUTP: (id) sender;

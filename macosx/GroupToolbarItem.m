@@ -24,11 +24,7 @@
 
 @implementation GroupToolbarItem
 
-
-- (void) setIdentifiers: (NSArray *) identifiers
-{
-    fIdentifiers = identifiers;
-}
+@synthesize identifiers = fIdentifiers;
 
 - (void) validate
 {

@@ -25,7 +25,7 @@
 #import "BlocklistScheduler.h"
 #import "Controller.h"
 
-@interface BlocklistDownloader (Private)
+@interface BlocklistDownloader ()
 
 - (void) startDownload;
 - (void) decompressBlocklist;
@@ -160,10 +160,6 @@ BlocklistDownloader * fBLDownloader = nil;
 {
     return YES;
 }
-
-@end
-
-@implementation BlocklistDownloader (Private)
 
 - (void) startDownload
 {

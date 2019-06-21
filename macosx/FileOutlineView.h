@@ -29,7 +29,7 @@
     NSInteger fMouseRow;
 }
 
-- (NSRect) iconRectForRow: (int) row;
+- (NSRect) iconRectForRow: (NSInteger) row;
 
 - (NSInteger) hoveredRow;
 

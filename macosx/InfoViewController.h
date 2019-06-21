@@ -22,9 +22,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@protocol InfoViewController
+@class Torrent;
 
-- (void) setInfoForTorrents: (NSArray *) torrents;
+@protocol InfoViewController <NSObject>
+
+- (void) setInfoForTorrents: (NSArray<Torrent*> *) torrents;
 - (void) updateInfo;
 
 @optional

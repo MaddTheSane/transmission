@@ -33,7 +33,7 @@
 #define TRACKER_REMOVE_TAG 1
 
 
-@interface InfoTrackersViewController (Private)
+@interface InfoTrackersViewController ()
 
 - (void) setupInfo;
 
@@ -239,10 +239,6 @@
     else
         [self addTrackers];
 }
-
-@end
-
-@implementation InfoTrackersViewController (Private)
 
 - (void) setupInfo
 {

@@ -34,7 +34,7 @@
 
 #define ETA_IDLE_DISPLAY_SEC (2*60)
 
-@interface Torrent (Private)
+@interface Torrent ()
 
 - (id) initWithPath: (NSString *) path hash: (NSString *) hashString torrentStruct: (tr_torrent *) torrentStruct
         magnetAddress: (NSString *) magnetAddress lib: (tr_session *) lib
@@ -368,7 +368,7 @@ bool trashDataFile(const char * filename, tr_error ** error)
     return fStat->queuePosition;
 }
 
-- (void) setQueuePosition: (NSUInteger) index
+- (void) setQueuePosition: (NSInteger) index
 {
     tr_torrentSetQueuePosition(fHandle, index);
 }
@@ -1637,10 +1637,6 @@ bool trashDataFile(const char * filename, tr_error ** error)
     return location ? [NSURL fileURLWithPath: location] : nil;
 }
 
-@end
-
-@implementation Torrent (Private)
-
 - (id) initWithPath: (NSString *) path hash: (NSString *) hashString torrentStruct: (tr_torrent *) torrentStruct
         magnetAddress: (NSString *) magnetAddress lib: (tr_session *) lib
         groupValue: (NSNumber *) groupValue
@@ -1852,14 +1848,11 @@ bool trashDataFile(const char * filename, tr_error ** error)
             else
             {
                 NSString * dataLocation = [[self currentDirectory] stringByAppendingPathComponent: [self name]];
-                FSRef ref;
-                if (FSPathMakeRef((const UInt8 *)[dataLocation UTF8String], &ref, NULL) == noErr)
+                NSURL * urlRef = [NSURL fileURLWithPath: dataLocation];
+                if (![urlRef setResourceValue: quarantineProperties forKey: NSURLQuarantinePropertiesKey error: nil])
                 {
-                    if (LSSetItemAttribute(&ref, kLSRolesAll, kLSItemQuarantineProperties, (__bridge CFTypeRef)(quarantineProperties)) != noErr)
-                        NSLog(@"Failed to quarantine: %@", dataLocation);
+                    NSLog(@"Failed to quarantine: %@", dataLocation);
                 }
-                else
-                    NSLog(@"Could not find file to quarantine: %@", dataLocation);
             }
             break;
         }
