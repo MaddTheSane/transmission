@@ -3127,7 +3127,7 @@ static void removeKeRangerRansomware()
             {
                 torrent = YES;
                 tr_ctor * ctor = tr_ctorNew(fLib);
-                tr_ctorSetMetainfoFromFile(ctor, [file UTF8String]);
+                tr_ctorSetMetainfoFromFile(ctor, [file fileSystemRepresentation]);
                 if (tr_torrentParse(ctor, NULL) == TR_PARSE_OK)
                 {
                     if (!fOverlayWindow)
