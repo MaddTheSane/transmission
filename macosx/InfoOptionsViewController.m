@@ -126,7 +126,7 @@
     [fUploadLimitLabel setEnabled: uploadUseSpeedLimit == NSOnState];
     [fUploadLimitField setEnabled: uploadUseSpeedLimit == NSOnState];
     if (uploadSpeedLimit != INVALID)
-        [fUploadLimitField setIntValue: uploadSpeedLimit];
+        [fUploadLimitField setIntegerValue: uploadSpeedLimit];
     else
         [fUploadLimitField setStringValue: @""];
 
@@ -137,7 +137,7 @@
     [fDownloadLimitLabel setEnabled: downloadUseSpeedLimit == NSOnState];
     [fDownloadLimitField setEnabled: downloadUseSpeedLimit == NSOnState];
     if (downloadSpeedLimit != INVALID)
-        [fDownloadLimitField setIntValue: downloadSpeedLimit];
+        [fDownloadLimitField setIntegerValue: downloadSpeedLimit];
     else
         [fDownloadLimitField setStringValue: @""];
 
@@ -262,7 +262,7 @@
     [fPeersConnectField setEnabled: YES];
     [fPeersConnectLabel setEnabled: YES];
     if (maxPeers != INVALID)
-        [fPeersConnectField setIntValue: maxPeers];
+        [fPeersConnectField setIntegerValue: maxPeers];
     else
         [fPeersConnectField setStringValue: @""];
 }

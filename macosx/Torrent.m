@@ -208,7 +208,7 @@ bool trashDataFile(const char * filename, tr_error ** error)
         NSNumber * ratioSetting;
         if ((ratioSetting = history[@"RatioSetting"]))
         {
-            switch ([ratioSetting intValue])
+            switch ([ratioSetting integerValue])
             {
                 case NSOnState: [self setRatioSetting: TR_RATIOLIMIT_SINGLE]; break;
                 case NSOffState: [self setRatioSetting: TR_RATIOLIMIT_UNLIMITED]; break;

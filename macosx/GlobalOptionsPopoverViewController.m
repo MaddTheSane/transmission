@@ -38,8 +38,8 @@
 
 - (void) awakeFromNib
 {
-    [fUploadLimitField setIntValue: [fDefaults integerForKey: @"UploadLimit"]];
-    [fDownloadLimitField setIntValue: [fDefaults integerForKey: @"DownloadLimit"]];
+    [fUploadLimitField setIntegerValue: [fDefaults integerForKey: @"UploadLimit"]];
+    [fDownloadLimitField setIntegerValue: [fDefaults integerForKey: @"DownloadLimit"]];
 
     [fRatioStopField setFloatValue: [fDefaults floatForKey: @"RatioLimit"]];
     [fIdleStopField setIntegerValue: [fDefaults integerForKey: @"IdleLimitMinutes"]];
