@@ -57,7 +57,7 @@
 
 #define WEBUI_URL   @"http://localhost:%ld/"
 
-@interface PrefsController ()
+@interface PrefsController () <PortCheckerDelegate>
 
 - (void) setPrefView: (id) sender;
 
@@ -179,24 +179,24 @@
     [self updateLimitFields];
 
     //set speed limit
-    [fSpeedLimitUploadField setIntValue: [fDefaults integerForKey: @"SpeedLimitUploadLimit"]];
-    [fSpeedLimitDownloadField setIntValue: [fDefaults integerForKey: @"SpeedLimitDownloadLimit"]];
+    [fSpeedLimitUploadField setIntegerValue: [fDefaults integerForKey: @"SpeedLimitUploadLimit"]];
+    [fSpeedLimitDownloadField setIntegerValue: [fDefaults integerForKey: @"SpeedLimitDownloadLimit"]];
 
     //set port
-    [fPortField setIntValue: [fDefaults integerForKey: @"BindPort"]];
+    [fPortField setIntegerValue: [fDefaults integerForKey: @"BindPort"]];
     fNatStatus = -1;
 
     [self updatePortStatus];
     fPortStatusTimer = [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector: @selector(updatePortStatus) userInfo: nil repeats: YES];
 
     //set peer connections
-    [fPeersGlobalField setIntValue: [fDefaults integerForKey: @"PeersTotal"]];
-    [fPeersTorrentField setIntValue: [fDefaults integerForKey: @"PeersTorrent"]];
+    [fPeersGlobalField setIntegerValue: [fDefaults integerForKey: @"PeersTotal"]];
+    [fPeersTorrentField setIntegerValue: [fDefaults integerForKey: @"PeersTorrent"]];
 
     //set queue values
-    [fQueueDownloadField setIntValue: [fDefaults integerForKey: @"QueueDownloadNumber"]];
-    [fQueueSeedField setIntValue: [fDefaults integerForKey: @"QueueSeedNumber"]];
-    [fStalledField setIntValue: [fDefaults integerForKey: @"StalledMinutes"]];
+    [fQueueDownloadField setIntegerValue: [fDefaults integerForKey: @"QueueDownloadNumber"]];
+    [fQueueSeedField setIntegerValue: [fDefaults integerForKey: @"QueueSeedNumber"]];
+    [fStalledField setIntegerValue: [fDefaults integerForKey: @"StalledMinutes"]];
 
     //set blocklist
     NSString * blocklistURL = [fDefaults stringForKey: @"BlocklistURL"];
@@ -222,7 +222,7 @@
         name: NSControlTextDidChangeNotification object: fBlocklistURLField];
 
     //set rpc port
-    [fRPCPortField setIntValue: [fDefaults integerForKey: @"RPCPort"]];
+    [fRPCPortField setIntegerValue: [fDefaults integerForKey: @"RPCPort"]];
 
     //set rpc password
     if (fRPCPassword)
@@ -641,8 +641,8 @@
     if (!fHasLoaded)
         return;
 
-    [fUploadField setIntValue: [fDefaults integerForKey: @"UploadLimit"]];
-    [fDownloadField setIntValue: [fDefaults integerForKey: @"DownloadLimit"]];
+    [fUploadField setIntegerValue: [fDefaults integerForKey: @"UploadLimit"]];
+    [fDownloadField setIntegerValue: [fDefaults integerForKey: @"DownloadLimit"]];
 }
 
 - (void) setGlobalLimit: (id) sender
@@ -771,7 +771,7 @@
 
 - (void) setStalledMinutes: (id) sender
 {
-    const NSInteger min = [sender intValue];
+    const NSInteger min = [sender integerValue];
     [fDefaults setInteger: min forKey: @"StalledMinutes"];
     tr_sessionSetQueueStalledMinutes(fHandle, min);
 
@@ -798,20 +798,20 @@
     [panel beginSheetModalForWindow: [self window] completionHandler: ^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton)
         {
-            [fFolderPopUp selectItemAtIndex: DOWNLOAD_FOLDER];
+            [self->fFolderPopUp selectItemAtIndex: DOWNLOAD_FOLDER];
 
             NSString * folder = [[panel URLs][0] path];
-            [fDefaults setObject: folder forKey: @"DownloadFolder"];
-            [fDefaults setBool: YES forKey: @"DownloadLocationConstant"];
+            [self->fDefaults setObject: folder forKey: @"DownloadFolder"];
+            [self->fDefaults setBool: YES forKey: @"DownloadLocationConstant"];
             [self updateShowAddMagnetWindowField];
 
             assert(folder.length > 0);
-            tr_sessionSetDownloadDir(fHandle, [folder fileSystemRepresentation]);
+            tr_sessionSetDownloadDir(self->fHandle, [folder fileSystemRepresentation]);
         }
         else
         {
             //reset if cancelled
-            [fFolderPopUp selectItemAtIndex: [fDefaults boolForKey: @"DownloadLocationConstant"] ? DOWNLOAD_FOLDER : DOWNLOAD_TORRENT];
+            [self->fFolderPopUp selectItemAtIndex: [self->fDefaults boolForKey: @"DownloadLocationConstant"] ? DOWNLOAD_FOLDER : DOWNLOAD_TORRENT];
         }
     }];
 }
@@ -830,12 +830,12 @@
         if (result == NSFileHandlingPanelOKButton)
         {
             NSString * folder = [[panel URLs][0] path];
-            [fDefaults setObject: folder forKey: @"IncompleteDownloadFolder"];
+            [self->fDefaults setObject: folder forKey: @"IncompleteDownloadFolder"];
 
             assert(folder.length > 0);
-            tr_sessionSetIncompleteDir(fHandle, [folder fileSystemRepresentation]);
+            tr_sessionSetIncompleteDir(self->fHandle, [folder fileSystemRepresentation]);
         }
-        [fIncompleteFolderPopUp selectItemAtIndex: 0];
+        [self->fIncompleteFolderPopUp selectItemAtIndex: 0];
     }];
 }
 
@@ -856,13 +856,13 @@
 
             assert(filePath.length > 0);
 
-            [fDefaults setObject: filePath forKey: @"DoneScriptPath"];
-            tr_sessionSetTorrentDoneScript(fHandle, [filePath fileSystemRepresentation]);
+            [self->fDefaults setObject: filePath forKey: @"DoneScriptPath"];
+            tr_sessionSetTorrentDoneScript(self->fHandle, [filePath fileSystemRepresentation]);
 
-            [fDefaults setBool: YES forKey: @"DoneScriptEnabled"];
-            tr_sessionSetTorrentDoneScriptEnabled(fHandle, YES);
+            [self->fDefaults setBool: YES forKey: @"DoneScriptEnabled"];
+            tr_sessionSetTorrentDoneScriptEnabled(self->fHandle, YES);
         }
-        [fDoneScriptPopUp selectItemAtIndex: 0];
+        [self->fDoneScriptPopUp selectItemAtIndex: 0];
     }];
 }
 
@@ -944,19 +944,19 @@
             [watcherQueue removeAllPaths];
 
             NSString * path = [[panel URLs][0] path];
-            [fDefaults setObject: path forKey: @"AutoImportDirectory"];
+            [self->fDefaults setObject: path forKey: @"AutoImportDirectory"];
             [watcherQueue addPath: [path stringByExpandingTildeInPath] notifyingAbout: VDKQueueNotifyAboutWrite];
 
             [[NSNotificationCenter defaultCenter] postNotificationName: @"AutoImportSettingChange" object: self];
         }
         else
         {
-            NSString * path = [fDefaults stringForKey: @"AutoImportDirectory"];
+            NSString * path = [self->fDefaults stringForKey: @"AutoImportDirectory"];
             if (!path)
-                [fDefaults setBool: NO forKey: @"AutoImport"];
+                [self->fDefaults setBool: NO forKey: @"AutoImport"];
         }
 
-        [fImportFolderPopUp selectItemAtIndex: 0];
+        [self->fImportFolderPopUp selectItemAtIndex: 0];
     }];
 }
 
@@ -1073,7 +1073,7 @@
         [fRPCWhitelistArray addObject: @""];
         [fRPCWhitelistTable reloadData];
 
-        const int row = [fRPCWhitelistArray count] - 1;
+        const NSInteger row = [fRPCWhitelistArray count] - 1;
         [fRPCWhitelistTable selectRowIndexes: [NSIndexSet indexSetWithIndex: row] byExtendingSelection: NO];
         [fRPCWhitelistTable editColumn: 0 row: row withEvent: nil select: YES];
     }
