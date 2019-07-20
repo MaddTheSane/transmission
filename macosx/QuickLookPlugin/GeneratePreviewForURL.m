@@ -51,8 +51,13 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
     if (err)
         return noErr;
 
-    NSBundle * bundle = [NSBundle bundleWithIdentifier: @"org.m0k.transmission.QuickLookPlugin"];
-
+    NSBundle * bundle;
+	{
+		CFBundleRef cfBundle = QLPreviewRequestGetGeneratorBundle(preview);
+		NSURL *bundleURL = CFBridgingRelease(CFBundleCopyBundleURL(cfBundle));
+		CFRelease(cfBundle);
+		bundle = [NSBundle bundleWithURL:bundleURL];
+	}
     NSURL * styleURL = [bundle URLForResource: @"style" withExtension: @"css"];
     NSString * styleContents = [NSString stringWithContentsOfURL: styleURL encoding: NSUTF8StringEncoding error: NULL];
 
