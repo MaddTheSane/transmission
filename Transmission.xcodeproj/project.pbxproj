@@ -43,6 +43,32 @@
 		4DE5CCCB0981D9BE00BE280E /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DE5CCCA0981D9BE00BE280E /* Defaults.plist */; };
 		4DF0C5AB0899190500DD8943 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF0C5A90899190500DD8943 /* Controller.m */; };
 		4DFBC2DF09C0970D00D5C571 /* Torrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFBC2DE09C0970D00D5C571 /* Torrent.m */; };
+		5515EC4622DD29A8007E5869 /* buffer_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC2C22DD29A7007E5869 /* buffer_compat.h */; };
+		5515EC4722DD29A8007E5869 /* rpc_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC2D22DD29A7007E5869 /* rpc_struct.h */; };
+		5515EC4822DD29A8007E5869 /* event-config.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC2E22DD29A7007E5869 /* event-config.h */; };
+		5515EC4922DD29A8007E5869 /* listener.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC2F22DD29A7007E5869 /* listener.h */; };
+		5515EC4A22DD29A8007E5869 /* dns_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3022DD29A7007E5869 /* dns_compat.h */; };
+		5515EC4B22DD29A8007E5869 /* tag.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3122DD29A7007E5869 /* tag.h */; };
+		5515EC4C22DD29A8007E5869 /* http.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3222DD29A7007E5869 /* http.h */; };
+		5515EC4D22DD29A8007E5869 /* event_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3322DD29A7007E5869 /* event_compat.h */; };
+		5515EC4E22DD29A8007E5869 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3422DD29A7007E5869 /* config.h */; };
+		5515EC4F22DD29A8007E5869 /* bufferevent_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3522DD29A7007E5869 /* bufferevent_struct.h */; };
+		5515EC5022DD29A8007E5869 /* event.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3622DD29A7007E5869 /* event.h */; };
+		5515EC5122DD29A8007E5869 /* bufferevent.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3722DD29A7007E5869 /* bufferevent.h */; };
+		5515EC5222DD29A8007E5869 /* tag_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3822DD29A7007E5869 /* tag_compat.h */; };
+		5515EC5322DD29A8007E5869 /* http_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3922DD29A7007E5869 /* http_struct.h */; };
+		5515EC5422DD29A8007E5869 /* buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3A22DD29A7007E5869 /* buffer.h */; };
+		5515EC5522DD29A8007E5869 /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3B22DD29A7007E5869 /* thread.h */; };
+		5515EC5622DD29A8007E5869 /* bufferevent_ssl.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3C22DD29A7007E5869 /* bufferevent_ssl.h */; };
+		5515EC5722DD29A8007E5869 /* keyvalq_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3D22DD29A7007E5869 /* keyvalq_struct.h */; };
+		5515EC5822DD29A8007E5869 /* http_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3E22DD29A7007E5869 /* http_compat.h */; };
+		5515EC5922DD29A8007E5869 /* util.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC3F22DD29A7007E5869 /* util.h */; };
+		5515EC5A22DD29A8007E5869 /* rpc.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC4022DD29A7007E5869 /* rpc.h */; };
+		5515EC5B22DD29A8007E5869 /* rpc_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC4122DD29A7007E5869 /* rpc_compat.h */; };
+		5515EC5C22DD29A8007E5869 /* dns.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC4222DD29A7007E5869 /* dns.h */; };
+		5515EC5D22DD29A8007E5869 /* dns_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC4322DD29A7007E5869 /* dns_struct.h */; };
+		5515EC5E22DD29A8007E5869 /* bufferevent_compat.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC4422DD29A7007E5869 /* bufferevent_compat.h */; };
+		5515EC5F22DD29A8007E5869 /* event_struct.h in Headers */ = {isa = PBXBuildFile; fileRef = 5515EC4522DD29A7007E5869 /* event_struct.h */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -535,6 +561,32 @@
 		4DF0C5AA0899190500DD8943 /* Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		4DFBC2DD09C0970D00D5C571 /* Torrent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Torrent.h; sourceTree = "<group>"; };
 		4DFBC2DE09C0970D00D5C571 /* Torrent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Torrent.m; sourceTree = "<group>"; };
+		5515EC2C22DD29A7007E5869 /* buffer_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer_compat.h; sourceTree = "<group>"; };
+		5515EC2D22DD29A7007E5869 /* rpc_struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rpc_struct.h; sourceTree = "<group>"; };
+		5515EC2E22DD29A7007E5869 /* event-config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "event-config.h"; sourceTree = "<group>"; };
+		5515EC2F22DD29A7007E5869 /* listener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listener.h; sourceTree = "<group>"; };
+		5515EC3022DD29A7007E5869 /* dns_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dns_compat.h; sourceTree = "<group>"; };
+		5515EC3122DD29A7007E5869 /* tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tag.h; sourceTree = "<group>"; };
+		5515EC3222DD29A7007E5869 /* http.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http.h; sourceTree = "<group>"; };
+		5515EC3322DD29A7007E5869 /* event_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = event_compat.h; sourceTree = "<group>"; };
+		5515EC3422DD29A7007E5869 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		5515EC3522DD29A7007E5869 /* bufferevent_struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bufferevent_struct.h; sourceTree = "<group>"; };
+		5515EC3622DD29A7007E5869 /* event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = event.h; sourceTree = "<group>"; };
+		5515EC3722DD29A7007E5869 /* bufferevent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bufferevent.h; sourceTree = "<group>"; };
+		5515EC3822DD29A7007E5869 /* tag_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tag_compat.h; sourceTree = "<group>"; };
+		5515EC3922DD29A7007E5869 /* http_struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_struct.h; sourceTree = "<group>"; };
+		5515EC3A22DD29A7007E5869 /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
+		5515EC3B22DD29A7007E5869 /* thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread.h; sourceTree = "<group>"; };
+		5515EC3C22DD29A7007E5869 /* bufferevent_ssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bufferevent_ssl.h; sourceTree = "<group>"; };
+		5515EC3D22DD29A7007E5869 /* keyvalq_struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keyvalq_struct.h; sourceTree = "<group>"; };
+		5515EC3E22DD29A7007E5869 /* http_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_compat.h; sourceTree = "<group>"; };
+		5515EC3F22DD29A7007E5869 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		5515EC4022DD29A7007E5869 /* rpc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rpc.h; sourceTree = "<group>"; };
+		5515EC4122DD29A7007E5869 /* rpc_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rpc_compat.h; sourceTree = "<group>"; };
+		5515EC4222DD29A7007E5869 /* dns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dns.h; sourceTree = "<group>"; };
+		5515EC4322DD29A7007E5869 /* dns_struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dns_struct.h; sourceTree = "<group>"; };
+		5515EC4422DD29A7007E5869 /* bufferevent_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bufferevent_compat.h; sourceTree = "<group>"; };
+		5515EC4522DD29A7007E5869 /* event_struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = event_struct.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Transmission.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transmission.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A200B8390A2263BA007BBB1E /* InfoWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfoWindowController.h; sourceTree = "<group>"; };
@@ -1531,6 +1583,40 @@
 			path = cli;
 			sourceTree = "<group>";
 		};
+		5515EC2B22DD29A7007E5869 /* event2 */ = {
+			isa = PBXGroup;
+			children = (
+				5515EC2C22DD29A7007E5869 /* buffer_compat.h */,
+				5515EC2D22DD29A7007E5869 /* rpc_struct.h */,
+				5515EC2E22DD29A7007E5869 /* event-config.h */,
+				5515EC2F22DD29A7007E5869 /* listener.h */,
+				5515EC3022DD29A7007E5869 /* dns_compat.h */,
+				5515EC3122DD29A7007E5869 /* tag.h */,
+				5515EC3222DD29A7007E5869 /* http.h */,
+				5515EC3322DD29A7007E5869 /* event_compat.h */,
+				5515EC3422DD29A7007E5869 /* config.h */,
+				5515EC3522DD29A7007E5869 /* bufferevent_struct.h */,
+				5515EC3622DD29A7007E5869 /* event.h */,
+				5515EC3722DD29A7007E5869 /* bufferevent.h */,
+				5515EC3822DD29A7007E5869 /* tag_compat.h */,
+				5515EC3922DD29A7007E5869 /* http_struct.h */,
+				5515EC3A22DD29A7007E5869 /* buffer.h */,
+				5515EC3B22DD29A7007E5869 /* thread.h */,
+				5515EC3C22DD29A7007E5869 /* bufferevent_ssl.h */,
+				5515EC3D22DD29A7007E5869 /* keyvalq_struct.h */,
+				5515EC3E22DD29A7007E5869 /* http_compat.h */,
+				5515EC3F22DD29A7007E5869 /* util.h */,
+				5515EC4022DD29A7007E5869 /* rpc.h */,
+				5515EC4122DD29A7007E5869 /* rpc_compat.h */,
+				5515EC4222DD29A7007E5869 /* dns.h */,
+				5515EC4322DD29A7007E5869 /* dns_struct.h */,
+				5515EC4422DD29A7007E5869 /* bufferevent_compat.h */,
+				5515EC4522DD29A7007E5869 /* event_struct.h */,
+			);
+			name = event2;
+			path = include/event2;
+			sourceTree = "<group>";
+		};
 		A22CFCB50FC24F630009BD3E /* dht */ = {
 			isa = PBXGroup;
 			children = (
@@ -1676,6 +1762,7 @@
 		BE75C3570C72A0D600DBEFE0 /* libevent */ = {
 			isa = PBXGroup;
 			children = (
+				5515EC2B22DD29A7007E5869 /* event2 */,
 				A2074F4B12BEA8CE00F70985 /* buffer.c */,
 				A2074F5012BEA8E000F70985 /* bufferevent_filter.c */,
 				A2074F5112BEA8E000F70985 /* bufferevent_openssl.c */,
@@ -1929,6 +2016,32 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5515EC5B22DD29A8007E5869 /* rpc_compat.h in Headers */,
+				5515EC4C22DD29A8007E5869 /* http.h in Headers */,
+				5515EC4D22DD29A8007E5869 /* event_compat.h in Headers */,
+				5515EC4E22DD29A8007E5869 /* config.h in Headers */,
+				5515EC5322DD29A8007E5869 /* http_struct.h in Headers */,
+				5515EC4822DD29A8007E5869 /* event-config.h in Headers */,
+				5515EC5C22DD29A8007E5869 /* dns.h in Headers */,
+				5515EC5722DD29A8007E5869 /* keyvalq_struct.h in Headers */,
+				5515EC4A22DD29A8007E5869 /* dns_compat.h in Headers */,
+				5515EC5522DD29A8007E5869 /* thread.h in Headers */,
+				5515EC5022DD29A8007E5869 /* event.h in Headers */,
+				5515EC5D22DD29A8007E5869 /* dns_struct.h in Headers */,
+				5515EC4622DD29A8007E5869 /* buffer_compat.h in Headers */,
+				5515EC5922DD29A8007E5869 /* util.h in Headers */,
+				5515EC5822DD29A8007E5869 /* http_compat.h in Headers */,
+				5515EC5422DD29A8007E5869 /* buffer.h in Headers */,
+				5515EC4F22DD29A8007E5869 /* bufferevent_struct.h in Headers */,
+				5515EC4B22DD29A8007E5869 /* tag.h in Headers */,
+				5515EC5622DD29A8007E5869 /* bufferevent_ssl.h in Headers */,
+				5515EC5222DD29A8007E5869 /* tag_compat.h in Headers */,
+				5515EC4922DD29A8007E5869 /* listener.h in Headers */,
+				5515EC5A22DD29A8007E5869 /* rpc.h in Headers */,
+				5515EC5F22DD29A8007E5869 /* event_struct.h in Headers */,
+				5515EC5E22DD29A8007E5869 /* bufferevent_compat.h in Headers */,
+				5515EC4722DD29A8007E5869 /* rpc_struct.h in Headers */,
+				5515EC5122DD29A8007E5869 /* bufferevent.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
