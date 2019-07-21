@@ -55,7 +55,6 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 	{
 		CFBundleRef cfBundle = QLPreviewRequestGetGeneratorBundle(preview);
 		NSURL *bundleURL = CFBridgingRelease(CFBundleCopyBundleURL(cfBundle));
-		CFRelease(cfBundle);
 		bundle = [NSBundle bundleWithURL:bundleURL];
 	}
     NSURL * styleURL = [bundle URLForResource: @"style" withExtension: @"css"];
