@@ -52,11 +52,12 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         return noErr;
 
     NSBundle * bundle;
-	{
-		CFBundleRef cfBundle = QLPreviewRequestGetGeneratorBundle(preview);
-		NSURL *bundleURL = CFBridgingRelease(CFBundleCopyBundleURL(cfBundle));
-		bundle = [NSBundle bundleWithURL:bundleURL];
-	}
+    {
+        CFBundleRef cfBundle = QLPreviewRequestGetGeneratorBundle(preview);
+        NSURL *bundleURL = CFBridgingRelease(CFBundleCopyBundleURL(cfBundle));
+        bundle = [NSBundle bundleWithURL:bundleURL];
+    }
+
     NSURL * styleURL = [bundle URLForResource: @"style" withExtension: @"css"];
     NSString * styleContents = [NSString stringWithContentsOfURL: styleURL encoding: NSUTF8StringEncoding error: NULL];
 
