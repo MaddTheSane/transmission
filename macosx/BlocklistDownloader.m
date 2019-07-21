@@ -132,16 +132,17 @@ BlocklistDownloader * fBLDownloader = nil;
         [self decompressBlocklist];
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            const int count = tr_blocklistSetContent([(Controller *)[NSApp delegate] sessionHandle], [fDestination fileSystemRepresentation]);
+            const int count = tr_blocklistSetContent([(Controller *)[NSApp delegate] sessionHandle], [self->fDestination fileSystemRepresentation]);
 
             //delete downloaded file
-            [[NSFileManager defaultManager] removeItemAtPath: fDestination error: NULL];
+            [[NSFileManager defaultManager] removeItemAtPath: self->fDestination error: NULL];
 
             if (count > 0)
-                [fViewController setFinished];
+                [self->fViewController setFinished];
             else
-                [fViewController setFailed: NSLocalizedString(@"The specified blocklist file did not contain any valid rules.",
-                                                              "blocklist fail message")];
+                [self->fViewController
+                 setFailed: NSLocalizedString(@"The specified blocklist file did not contain any valid rules.",
+                                              @"blocklist fail message")];
 
             //update last updated date for schedule
             NSDate * date = [NSDate date];

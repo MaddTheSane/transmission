@@ -291,9 +291,9 @@ NSString * VDKQueueAccessRevocationNotification = @"VDKQueueAccessWasRevokedNoti
                                            ^{
                                                for (NSString *note in notes)
                                                {
-                                                   [_delegate VDKQueue:self receivedNotification:note forPath:fpath];
+                                                   [self->_delegate VDKQueue:self receivedNotification:note forPath:fpath];
                                                    
-                                                   if (!_delegate || _alwaysPostNotifications)
+                                                   if (!self->_delegate || self->_alwaysPostNotifications)
                                                    {
                                                        NSDictionary * userInfoDict = [[NSDictionary alloc] initWithObjects: @[fpath] forKeys: @[@"path"]];
                                                        [[[NSWorkspace sharedWorkspace] notificationCenter] postNotificationName:note object:self userInfo:userInfoDict];

@@ -1165,7 +1165,7 @@ static void removeKeRangerRansomware()
 
             NSDictionary * dictionary = [[NSDictionary alloc] initWithObjects: @[
                 filenames,
-                sender == fOpenIgnoreDownloadFolder ? @(ADD_SHOW_OPTIONS) : @(ADD_MANUAL)]
+                sender == self->fOpenIgnoreDownloadFolder ? @(ADD_SHOW_OPTIONS) : @(ADD_MANUAL)]
                 forKeys: @[@"Filenames", @"AddType"]];
             [self performSelectorOnMainThread: @selector(openFilesWithDict:) withObject: dictionary waitUntilDone: NO];
         }

@@ -174,12 +174,12 @@
     [panel beginSheetModalForWindow: [self window] completionHandler: ^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton)
         {
-            fLockDestination = YES;
+            self->fLockDestination = YES;
             [self setDestinationPath: [[panel URLs][0] path] determinationType: TorrentDeterminationUserSpecified];
         }
         else
         {
-            if (!fDestination)
+            if (!self->fDestination)
                 [self performSelectorOnMainThread: @selector(cancelAdd:) withObject: nil waitUntilDone: NO];
         }
     }];

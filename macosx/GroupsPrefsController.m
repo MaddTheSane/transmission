@@ -208,7 +208,7 @@
     [panel setCanCreateDirectories: YES];
 
     [panel beginSheetModalForWindow: [fCustomLocationPopUp window] completionHandler: ^(NSInteger result) {
-        const NSInteger index = [[GroupsController groups] indexForRow: [fTableView selectedRow]];
+        const NSInteger index = [[GroupsController groups] indexForRow: [self->fTableView selectedRow]];
         if (result == NSFileHandlingPanelOKButton)
         {
             NSString * path = [[panel URLs][0] path];
@@ -223,7 +223,7 @@
 
         [self refreshCustomLocationWithSingleGroup];
 
-        [fCustomLocationPopUp selectItemAtIndex: 0];
+        [self->fCustomLocationPopUp selectItemAtIndex: 0];
     }];
 }
 

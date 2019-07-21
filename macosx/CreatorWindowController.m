@@ -256,7 +256,7 @@ NSMutableSet *creatorWindowControllerSet = nil;
     [panel beginSheetModalForWindow: [self window] completionHandler: ^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton)
         {
-            fLocation = [panel URL];
+            self->fLocation = [panel URL];
             [self updateLocationField];
         }
     }];
