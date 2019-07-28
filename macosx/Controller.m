@@ -1485,7 +1485,7 @@ static void removeKeRangerRansomware()
 
     //#5106 - don't try to remove torrents that have already been removed (fix for a bug, but better safe than crash anyway)
     NSIndexSet * indexesToRemove = [torrents indexesOfObjectsWithOptions: NSEnumerationConcurrent passingTest: ^BOOL(Torrent * torrent, NSUInteger idx, BOOL * stop) {
-        return [fTorrents indexOfObjectIdenticalTo: torrent] != NSNotFound;
+        return [self->fTorrents indexOfObjectIdenticalTo: torrent] != NSNotFound;
     }];
     if ([torrents count] != [indexesToRemove count])
     {
@@ -1521,11 +1521,11 @@ static void removeKeRangerRansomware()
                         [torrent closeRemoveTorrent: deleteData];
                 }];
 
-                [fTableView beginUpdates];
+                [self->fTableView beginUpdates];
                 beganUpdate = YES;
             }
 
-            [fTableView removeItemsAtIndexes: indexes inParent: parent withAnimation: NSTableViewAnimationSlideLeft];
+            [self->fTableView removeItemsAtIndexes: indexes inParent: parent withAnimation: NSTableViewAnimationSlideLeft];
 
             [displayedTorrents removeObjectsAtIndexes: indexes];
         }
@@ -2444,7 +2444,7 @@ static void removeKeRangerRansomware()
 
         //for each of the torrents to add, find if it already exists (and keep track of those we've already added & those we need to remove)
         [allTorrents enumerateObjectsWithOptions: 0 usingBlock: ^(id objAll, NSUInteger previousIndex, BOOL * stop) {
-            const NSUInteger currentIndex = [fDisplayedTorrents indexOfObjectAtIndexes: removePreviousIndexes options: NSEnumerationConcurrent passingTest: ^(id objDisplay, NSUInteger idx, BOOL *stop) {
+            const NSUInteger currentIndex = [self->fDisplayedTorrents indexOfObjectAtIndexes: removePreviousIndexes options: NSEnumerationConcurrent passingTest: ^(id objDisplay, NSUInteger idx, BOOL *stop) {
                 return (BOOL)(objAll == objDisplay);
             }];
             if (currentIndex == NSNotFound)
@@ -2472,7 +2472,7 @@ static void removeKeRangerRansomware()
                 if (fAddingTransfers)
                 {
                     NSIndexSet * newAddIndexes = [allTorrents indexesOfObjectsAtIndexes: addIndexes options: NSEnumerationConcurrent passingTest: ^BOOL(id obj, NSUInteger idx, BOOL * stop) {
-                        return [fAddingTransfers containsObject: obj];
+                        return [self->fAddingTransfers containsObject: obj];
                     }];
 
                     [addIndexes removeIndexes: newAddIndexes];
@@ -4567,11 +4567,11 @@ static void removeKeRangerRansomware()
                     break;
 
                 case TR_RPC_SESSION_CHANGED:
-                    [fPrefsController rpcUpdatePrefs];
+                    [self->fPrefsController rpcUpdatePrefs];
                     break;
 
                 case TR_RPC_SESSION_CLOSE:
-                    fQuitRequested = YES;
+                    self->fQuitRequested = YES;
                     [NSApp terminate: self];
                     break;
 

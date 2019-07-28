@@ -141,7 +141,7 @@ extern NSString * VDKQueueAccessRevocationNotification;
 - (void) removeAllPaths;
 
 
-- (NSUInteger) numberOfWatchedPaths;                                //  Returns the number of paths that this VDKQueue instance is actively watching.
+@property (readonly) NSUInteger numberOfWatchedPaths;                                //  Returns the number of paths that this VDKQueue instance is actively watching.
 
 
 

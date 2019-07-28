@@ -189,7 +189,7 @@
             [self setDestinationPath: [[panel URLs][0] path] determinationType:TorrentDeterminationUserSpecified];
         else
         {
-            if (!fDestination)
+            if (!self->fDestination)
                 [self performSelectorOnMainThread: @selector(cancelAdd:) withObject: nil waitUntilDone: NO];
         }
     }];

@@ -39,7 +39,7 @@
 
     tr_metainfo_builder * fInfo;
     NSURL * fPath, * fLocation;
-    NSMutableArray * fTrackers;
+    NSMutableArray<NSString *> * fTrackers;
 
     NSTimer * fTimer;
     BOOL fStarted, fOpenWhenCreated;

@@ -3053,6 +3053,7 @@
 				OTHER_CFLAGS = "-DHAVE_CONFIG_H";
 				PRODUCT_BUNDLE_IDENTIFIER = org.m0k.transmission;
 				PRODUCT_NAME = event;
+				SYSTEM_HEADER_SEARCH_PATHS = "third-party/libevent/compat third-party/libevent/include";
 				USER_HEADER_SEARCH_PATHS = "third-party/libevent/compat third-party/libevent/include";
 			};
 			name = Debug;
@@ -3095,6 +3096,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = Transmission;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = macosx;
 				GCC_PREFIX_HEADER = macosx/Transmission_Prefix.pch;
@@ -3161,7 +3163,9 @@
 		0053D3DA0C86774200545606 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -3314,6 +3318,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = Transmission;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = macosx;
 				GCC_PREFIX_HEADER = macosx/Transmission_Prefix.pch;
@@ -3331,7 +3336,9 @@
 		4DF0C59D089918A300DD8943 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -3429,7 +3436,9 @@
 		A250CFEB0CDA19680068B4B6 /* Release - Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -3501,6 +3510,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = Transmission;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = macosx;
 				GCC_PREFIX_HEADER = macosx/Transmission_Prefix.pch;
@@ -3605,6 +3615,7 @@
 				OTHER_CFLAGS = "-DHAVE_CONFIG_H";
 				PRODUCT_BUNDLE_IDENTIFIER = org.m0k.transmission;
 				PRODUCT_NAME = event;
+				SYSTEM_HEADER_SEARCH_PATHS = "third-party/libevent/compat third-party/libevent/include";
 				USER_HEADER_SEARCH_PATHS = "third-party/libevent/compat third-party/libevent/include";
 			};
 			name = "Release - Debug";
@@ -3649,6 +3660,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				GCC_PREFIX_HEADER = "macosx/QuickLookPlugin/QuickLookPlugin-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3667,6 +3679,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				GCC_PREFIX_HEADER = "macosx/QuickLookPlugin/QuickLookPlugin-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3685,6 +3698,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				GCC_PREFIX_HEADER = "macosx/QuickLookPlugin/QuickLookPlugin-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3737,6 +3751,7 @@
 				OTHER_CFLAGS = "-DHAVE_CONFIG_H";
 				PRODUCT_BUNDLE_IDENTIFIER = org.m0k.transmission;
 				PRODUCT_NAME = event;
+				SYSTEM_HEADER_SEARCH_PATHS = "third-party/libevent/compat third-party/libevent/include";
 				USER_HEADER_SEARCH_PATHS = "third-party/libevent/compat third-party/libevent/include";
 			};
 			name = Release;
