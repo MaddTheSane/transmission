@@ -396,7 +396,7 @@
             //make the array sorted by date
             NSSortDescriptor * descriptor = [NSSortDescriptor sortDescriptorWithKey: @"Index" ascending: YES];
             NSArray * descriptors = [[NSArray alloc] initWithObjects: descriptor, nil];
-            NSArray * sortedMessages = [fDisplayedMessages sortedArrayUsingDescriptors: descriptors];
+            NSArray * sortedMessages = [self->fDisplayedMessages sortedArrayUsingDescriptors: descriptors];
 
             //create the text to output
             NSMutableArray * messageStrings = [NSMutableArray arrayWithCapacity: [sortedMessages count]];

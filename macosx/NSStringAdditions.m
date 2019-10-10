@@ -216,7 +216,7 @@
     }
     while (YES);
 
-    return components;
+    return [components copy];
 }
 
 @end

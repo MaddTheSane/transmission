@@ -41,8 +41,10 @@
 + (NSString *) timeString: (uint64_t) seconds includesTimeRemainingPhrase: (BOOL) includesTimeRemainingPhrase showSeconds: (BOOL) showSeconds;
 + (NSString *) timeString: (uint64_t) seconds includesTimeRemainingPhrase: (BOOL) includesTimeRemainingPhrase showSeconds: (BOOL) showSeconds maxFields: (NSUInteger) max;
 
-- (NSComparisonResult) compareNumeric: (NSString *) string; //simple compare method for strings with numbers (works for IP addresses)
+//! simple compare method for strings with numbers (works for IP addresses)
+- (NSComparisonResult) compareNumeric: (NSString *) string;
 
-- (NSArray *) betterComponentsSeparatedByCharactersInSet: (NSCharacterSet *) separators; //like componentsSeparatedByCharactersInSet:, but excludes blank values
+//! like <code>componentsSeparatedByCharactersInSet:</code>, but excludes blank values
+- (NSArray<NSString*> *) betterComponentsSeparatedByCharactersInSet: (NSCharacterSet *) separators;
 
 @end
