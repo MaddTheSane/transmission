@@ -354,9 +354,7 @@ static void removeKeRangerRansomware()
         tr_variantDictAddInt(&settings, TR_KEY_download_queue_size, [fDefaults integerForKey: @"QueueDownloadNumber"]);
         tr_variantDictAddInt(&settings, TR_KEY_idle_seeding_limit, [fDefaults integerForKey: @"IdleLimitMinutes"]);
         tr_variantDictAddBool(&settings, TR_KEY_idle_seeding_limit_enabled, [fDefaults boolForKey: @"IdleLimitCheck"]);
-        tmpLocStr = [[fDefaults stringForKey: @"IncompleteDownloadFolder"]
-                     stringByExpandingTildeInPath];
-        tr_variantDictAddStr(&settings, TR_KEY_incomplete_dir, tmpLocStr.length != 0 ? tmpLocStr.fileSystemRepresentation : NULL);
+        tr_variantDictAddStr(&settings, TR_KEY_incomplete_dir, [[fDefaults URLForKey: @"IncompleteDownloadFolder"] fileSystemRepresentation]);
         tr_variantDictAddBool(&settings, TR_KEY_incomplete_dir_enabled, [fDefaults boolForKey: @"UseIncompleteDownloadFolder"]);
         tr_variantDictAddBool(&settings, TR_KEY_lpd_enabled, [fDefaults boolForKey: @"LocalPeerDiscoveryGlobal"]);
         tr_variantDictAddInt(&settings, TR_KEY_message_level, TR_LOG_DEBUG);

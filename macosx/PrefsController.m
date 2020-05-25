@@ -829,10 +829,10 @@
     [panel beginSheetModalForWindow: [self window] completionHandler: ^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton)
         {
-            NSString * folder = [[panel URLs][0] path];
-            [self->fDefaults setObject: folder forKey: @"IncompleteDownloadFolder"];
+            NSURL * folder = [panel URLs][0];
+            [self->fDefaults setURL: folder forKey: @"IncompleteDownloadFolder"];
 
-            assert(folder.length > 0);
+            assert(folder);
             tr_sessionSetIncompleteDir(self->fHandle, [folder fileSystemRepresentation]);
         }
         [self->fIncompleteFolderPopUp selectItemAtIndex: 0];
@@ -1187,8 +1187,8 @@
     NSString * downloadLocation = [@(tr_sessionGetDownloadDir(fHandle)) stringByStandardizingPath];
     [fDefaults setObject: downloadLocation forKey: @"DownloadFolder"];
 
-    NSString * incompleteLocation = [@(tr_sessionGetIncompleteDir(fHandle)) stringByStandardizingPath];
-    [fDefaults setObject: incompleteLocation forKey: @"IncompleteDownloadFolder"];
+    NSURL * incompleteLocation = [NSURL fileURLWithPath:[@(tr_sessionGetIncompleteDir(fHandle)) stringByStandardizingPath]];
+    [fDefaults setURL: incompleteLocation forKey: @"IncompleteDownloadFolder"];
 
     const BOOL useIncomplete = tr_sessionIsIncompleteDirEnabled(fHandle);
     [fDefaults setBool: useIncomplete forKey: @"UseIncompleteDownloadFolder"];
