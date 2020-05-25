@@ -993,7 +993,7 @@
 {
     fRPCPassword = [[sender stringValue] copy];
 
-    const char * password = [[sender stringValue] UTF8String];
+    const char * password = [fRPCPassword UTF8String];
     [self setKeychainPassword: password forService: RPC_KEYCHAIN_SERVICE username: RPC_KEYCHAIN_NAME];
 
     tr_sessionSetRPCPassword(fHandle, password);

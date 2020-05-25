@@ -100,8 +100,9 @@ void metadataCallback(tr_torrent * torrent, void * torrentData)
 void renameCallback(tr_torrent * torrent, const char * oldPathCharString, const char * newNameCharString, int error, void * contextInfo)
 {
     @autoreleasepool {
-        NSString * oldPath = @(oldPathCharString);
-        NSString * newName = @(newNameCharString);
+        NSFileManager *fm = [NSFileManager defaultManager];
+        NSString * oldPath = [fm stringWithFileSystemRepresentation:oldPathCharString length:strlen(oldPathCharString)];
+        NSString * newName = [fm stringWithFileSystemRepresentation:newNameCharString length:strlen(newNameCharString)];
 
         dispatch_async(dispatch_get_main_queue(), ^{
             NSDictionary * contextDict = (__bridge_transfer NSDictionary *)contextInfo;

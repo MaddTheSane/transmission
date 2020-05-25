@@ -405,7 +405,7 @@
 
             NSString * fileString = [messageStrings componentsJoinedByString: @"\n"];
 
-            if (![fileString writeToFile: [[panel URL] path] atomically: YES encoding: NSUTF8StringEncoding error: nil])
+            if (![fileString writeToURL: [panel URL] atomically: YES encoding: NSUTF8StringEncoding error: nil])
             {
                 NSAlert * alert = [[NSAlert alloc] init];
                 [alert addButtonWithTitle: NSLocalizedString(@"OK", "Save log alert panel -> button")];
