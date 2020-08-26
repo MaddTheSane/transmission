@@ -29,13 +29,13 @@
 
 
 
-NSString * VDKQueueRenameNotification = @"VDKQueueFileRenamedNotification";
-NSString * VDKQueueWriteNotification = @"VDKQueueFileWrittenToNotification";
-NSString * VDKQueueDeleteNotification = @"VDKQueueFileDeletedNotification";
-NSString * VDKQueueAttributeChangeNotification = @"VDKQueueFileAttributesChangedNotification";
-NSString * VDKQueueSizeIncreaseNotification = @"VDKQueueFileSizeIncreasedNotification";
-NSString * VDKQueueLinkCountChangeNotification = @"VDKQueueLinkCountChangedNotification";
-NSString * VDKQueueAccessRevocationNotification = @"VDKQueueAccessWasRevokedNotification";
+NSString * const VDKQueueRenameNotification = @"VDKQueueFileRenamedNotification";
+NSString * const VDKQueueWriteNotification = @"VDKQueueFileWrittenToNotification";
+NSString * const VDKQueueDeleteNotification = @"VDKQueueFileDeletedNotification";
+NSString * const VDKQueueAttributeChangeNotification = @"VDKQueueFileAttributesChangedNotification";
+NSString * const VDKQueueSizeIncreaseNotification = @"VDKQueueFileSizeIncreasedNotification";
+NSString * const VDKQueueLinkCountChangeNotification = @"VDKQueueLinkCountChangedNotification";
+NSString * const VDKQueueAccessRevocationNotification = @"VDKQueueAccessWasRevokedNotification";
 
 
 
@@ -49,14 +49,14 @@ NSString * VDKQueueAccessRevocationNotification = @"VDKQueueAccessWasRevokedNoti
 {
 	NSString*		_path;
 	int				_watchedFD;
-	u_int			_subscriptionFlags;
+	VDKQueueNotifyOptions	_subscriptionFlags;
 }
 
-- (id) initWithPath:(NSString*)inPath andSubscriptionFlags:(u_int)flags;
+- (id) initWithPath:(NSString*)inPath andSubscriptionFlags:(VDKQueueNotifyOptions)flags;
 
 @property (atomic, copy) NSString *path;
 @property (atomic, assign) int watchedFD;
-@property (atomic, assign) u_int subscriptionFlags;
+@property (atomic, assign) VDKQueueNotifyOptions subscriptionFlags;
 
 @end
 
@@ -64,7 +64,7 @@ NSString * VDKQueueAccessRevocationNotification = @"VDKQueueAccessWasRevokedNoti
 @synthesize path = _path, watchedFD = _watchedFD, subscriptionFlags = _subscriptionFlags;
 
 
-- (id) initWithPath:(NSString*)inPath andSubscriptionFlags:(u_int)flags;
+- (id) initWithPath:(NSString*)inPath andSubscriptionFlags:(VDKQueueNotifyOptions)flags;
 {
     self = [super init];
 	if (self)
@@ -155,7 +155,7 @@ NSString * VDKQueueAccessRevocationNotification = @"VDKQueueAccessWasRevokedNoti
 #pragma mark -
 #pragma mark PRIVATE METHODS
 
-- (VDKQueuePathEntry *)	addPathToQueue:(NSString *)path notifyingAbout:(u_int)flags
+- (VDKQueuePathEntry *)	addPathToQueue:(NSString *)path notifyingAbout:(VDKQueueNotifyOptions)flags
 {
 	@synchronized(self)
 	{
@@ -356,7 +356,7 @@ NSString * VDKQueueAccessRevocationNotification = @"VDKQueueAccessWasRevokedNoti
 }
 
 
-- (void) addPath:(NSString *)aPath notifyingAbout:(u_int)flags
+- (void) addPath:(NSString *)aPath notifyingAbout:(VDKQueueNotifyOptions)flags
 {
     if (!aPath) return;
     

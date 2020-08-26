@@ -68,47 +68,49 @@
 #include <sys/event.h>
 
 
-//
-//  Logical OR these values into the u_int that you pass in the -addPath:notifyingAbout: method
-//  to specify the types of notifications you're interested in. Pass the default value to receive all of them.
-//
-#define VDKQueueNotifyAboutRename					NOTE_RENAME		// Item was renamed.
-#define VDKQueueNotifyAboutWrite					NOTE_WRITE		// Item contents changed (also folder contents changed).
-#define VDKQueueNotifyAboutDelete					NOTE_DELETE		// item was removed.
-#define VDKQueueNotifyAboutAttributeChange			NOTE_ATTRIB		// Item attributes changed.
-#define VDKQueueNotifyAboutSizeIncrease				NOTE_EXTEND		// Item size increased.
-#define VDKQueueNotifyAboutLinkCountChanged			NOTE_LINK		// Item's link count changed.
-#define VDKQueueNotifyAboutAccessRevocation			NOTE_REVOKE		// Access to item was revoked.
+//!
+//!  Logical OR these values into the u_int that you pass in the -addPath:notifyingAbout: method
+//!  to specify the types of notifications you're interested in. Pass the default value to receive all of them.
+//!
+typedef NS_OPTIONS(u_int, VDKQueueNotifyOptions) {
+    VDKQueueNotifyAboutRename					= NOTE_RENAME,		//!< Item was renamed.
+    VDKQueueNotifyAboutWrite					= NOTE_WRITE,		//!< Item contents changed (also folder contents changed).
+    VDKQueueNotifyAboutDelete					= NOTE_DELETE,		//!< item was removed.
+    VDKQueueNotifyAboutAttributeChange			= NOTE_ATTRIB,		//!< Item attributes changed.
+    VDKQueueNotifyAboutSizeIncrease				= NOTE_EXTEND,		//!< Item size increased.
+    VDKQueueNotifyAboutLinkCountChanged			= NOTE_LINK,		//!< Item's link count changed.
+    VDKQueueNotifyAboutAccessRevocation			= NOTE_REVOKE,		//!< Access to item was revoked.
 
-#define VDKQueueNotifyDefault						(VDKQueueNotifyAboutRename | VDKQueueNotifyAboutWrite \
-                                                    | VDKQueueNotifyAboutDelete | VDKQueueNotifyAboutAttributeChange \
-                                                    | VDKQueueNotifyAboutSizeIncrease | VDKQueueNotifyAboutLinkCountChanged \
+    VDKQueueNotifyDefault						= (VDKQueueNotifyAboutRename | VDKQueueNotifyAboutWrite
+                                                    | VDKQueueNotifyAboutDelete | VDKQueueNotifyAboutAttributeChange
+                                                    | VDKQueueNotifyAboutSizeIncrease | VDKQueueNotifyAboutLinkCountChanged
                                                     | VDKQueueNotifyAboutAccessRevocation)
+};
 
 //
 //  Notifications that this class sends to the NSWORKSPACE notification center.
 //      Object          =   the instance of VDKQueue that was watching for changes
 //      userInfo.path   =   the file path where the change was observed
 //
-extern NSString * VDKQueueRenameNotification;
-extern NSString * VDKQueueWriteNotification;
-extern NSString * VDKQueueDeleteNotification;
-extern NSString * VDKQueueAttributeChangeNotification;
-extern NSString * VDKQueueSizeIncreaseNotification;
-extern NSString * VDKQueueLinkCountChangeNotification;
-extern NSString * VDKQueueAccessRevocationNotification;
+extern NSNotificationName const VDKQueueRenameNotification;
+extern NSNotificationName const VDKQueueWriteNotification;
+extern NSNotificationName const VDKQueueDeleteNotification;
+extern NSNotificationName const VDKQueueAttributeChangeNotification;
+extern NSNotificationName const VDKQueueSizeIncreaseNotification;
+extern NSNotificationName const VDKQueueLinkCountChangeNotification;
+extern NSNotificationName const VDKQueueAccessRevocationNotification;
 
 
 
-//
-//  Or, instead of subscribing to notifications, you can specify a delegate and implement this method to respond to kQueue events.
-//  Note the required statement! For speed, this class does not check to make sure the delegate implements this method. (When I say "required" I mean it!)
-//
+//!
+//!  Or, instead of subscribing to notifications, you can specify a delegate and implement this method to respond to kQueue events.
+//!  Note the required statement! For speed, this class does not check to make sure the delegate implements this method. (When I say "required" I mean it!)
+//!
 @class VDKQueue;
 @protocol VDKQueueDelegate <NSObject>
 @required
 
--(void) VDKQueue:(VDKQueue *)queue receivedNotification:(NSString*)noteName forPath:(NSString*)fpath;
+-(void) VDKQueue:(VDKQueue *)queue receivedNotification:(NSNotificationName)noteName forPath:(NSString*)fpath;
 
 @end
 
@@ -135,17 +137,18 @@ extern NSString * VDKQueueAccessRevocationNotification;
 //  Warning: You must pass full, root-relative paths. Do not pass tilde-abbreviated paths or file URLs. 
 //
 - (void) addPath:(NSString *)aPath;
-- (void) addPath:(NSString *)aPath notifyingAbout:(u_int)flags;     // See note above for values to pass in "flags"
+- (void) addPath:(NSString *)aPath notifyingAbout:(VDKQueueNotifyOptions)flags;     // See note above for values to pass in "flags"
 
 - (void) removePath:(NSString *)aPath;
 - (void) removeAllPaths;
 
 
-@property (readonly) NSUInteger numberOfWatchedPaths;                                //  Returns the number of paths that this VDKQueue instance is actively watching.
+@property (readonly) NSUInteger numberOfWatchedPaths;                                //!<  Returns the number of paths that this VDKQueue instance is actively watching.
 
 
 
 @property (weak) id<VDKQueueDelegate> delegate;
+//! By default, notifications are posted only if there is no delegate set. Set this value to YES to have notes posted even when there is a delegate.
 @property (assign) BOOL alwaysPostNotifications;
 
 @end
