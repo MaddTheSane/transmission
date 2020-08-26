@@ -859,11 +859,13 @@ static void removeKeRangerRansomware()
             fPendingTorrentDownloads = nil;
         }
 
-        NSRunAlertPanel(NSLocalizedString(@"Torrent download failed", "Download not a torrent -> title"),
-            NSLocalizedString(@"It appears that the file \"%@\" from %@ is not a torrent file.",
-            "Download not a torrent -> message"),
-            NSLocalizedString(@"OK", "Download not a torrent -> button"), nil, nil, suggestedName,
-            [[[[download request] URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding]);
+        NSAlert *alert = [[NSAlert alloc] init];
+        alert.messageText = NSLocalizedString(@"Torrent download failed", "Download not a torrent -> title");
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"It appears that the file \"%@\" from %@ is not a torrent file.",
+                                                                             "Download not a torrent -> message"),
+                                 suggestedName, [[[[download request] URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", "Download not a torrent -> button")];
+        [alert runModal];
     }
     else
         [download setDestination: [NSTemporaryDirectory() stringByAppendingPathComponent: [suggestedName lastPathComponent]]
@@ -878,11 +880,14 @@ static void removeKeRangerRansomware()
 
 - (void) download: (NSURLDownload *) download didFailWithError: (NSError *) error
 {
-    NSRunAlertPanel(NSLocalizedString(@"Torrent download failed", "Torrent download error -> title"),
-        NSLocalizedString(@"The torrent could not be downloaded from %@: %@.",
-                          "Torrent download failed -> message"), NSLocalizedString(@"OK", "Torrent download failed -> button"), nil, nil,
-        [[[[download request] URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding],
-        [error localizedDescription]);
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.messageText = NSLocalizedString(@"Torrent download failed", "Torrent download error -> title");
+    alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"The torrent could not be downloaded from %@: %@.",
+    "Torrent download failed -> message"),
+                             [[[[download request] URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding],
+                             [error localizedDescription]];
+    [alert addButtonWithTitle:NSLocalizedString(@"OK", "Torrent download failed -> button")];
+    [alert runModal];
 
     [fPendingTorrentDownloads removeObjectForKey: [[download request] URL]];
     if ([fPendingTorrentDownloads count] == 0)
