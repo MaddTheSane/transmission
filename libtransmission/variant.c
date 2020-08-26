@@ -31,7 +31,7 @@
 
 #include <event2/buffer.h>
 
-#define __LIBTRANSMISSION_VARIANT_MODULE__
+#define LIBTRANSMISSION_VARIANT_MODULE
 
 #include "transmission.h"
 #include "ConvertUTF.h"
@@ -821,13 +821,13 @@ static void nodeDestruct(struct SaveNode* node)
  * easier to read, but was vulnerable to a smash-stacking
  * attack via maliciously-crafted data. (#667)
  */
-void tr_variantWalk(tr_variant const* v, struct VariantWalkFuncs const* walkFuncs, void* user_data, bool sort_dicts)
+void tr_variantWalk(tr_variant const* v_in, struct VariantWalkFuncs const* walkFuncs, void* user_data, bool sort_dicts)
 {
     int stackSize = 0;
     int stackAlloc = 64;
     struct SaveNode* stack = tr_new(struct SaveNode, stackAlloc);
 
-    nodeConstruct(&stack[stackSize++], v, sort_dicts);
+    nodeConstruct(&stack[stackSize++], v_in, sort_dicts);
 
     while (stackSize > 0)
     {
@@ -936,17 +936,23 @@ void tr_variantWalk(tr_variant const* v, struct VariantWalkFuncs const* walkFunc
 *****
 ****/
 
-static void freeDummyFunc(tr_variant const* v UNUSED, void* buf UNUSED)
+static void freeDummyFunc(tr_variant const* v, void* buf)
 {
+    TR_UNUSED(v);
+    TR_UNUSED(buf);
 }
 
-static void freeStringFunc(tr_variant const* v, void* unused UNUSED)
+static void freeStringFunc(tr_variant const* v, void* user_data)
 {
+    TR_UNUSED(user_data);
+
     tr_variant_string_clear(&((tr_variant*)v)->val.s);
 }
 
-static void freeContainerEndFunc(tr_variant const* v, void* unused UNUSED)
+static void freeContainerEndFunc(tr_variant const* v, void* user_data)
 {
+    TR_UNUSED(user_data);
+
     tr_free(v->val.l.vals);
 }
 

@@ -97,7 +97,7 @@ string(SUBSTRING "${TR_VCS_REVISION}" 0 10 TR_VCS_REVISION)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-set(CURL_MINIMUM            7.15.4)
+set(CURL_MINIMUM            7.28.0)
 set(EVENT2_MINIMUM          2.0.10)
 set(OPENSSL_MINIMUM         0.9.7)
 set(CYASSL_MINIMUM          3.0)
@@ -111,6 +111,7 @@ set(QT5_MINIMUM             5.2)
 
 if(WIN32)
     foreach(L C CXX)
+        set(CMAKE_${L}_FLAGS "${CMAKE_${L}_FLAGS} -DWIN32")
         # Target version (Vista and up)
         set(CMAKE_${L}_FLAGS "${CMAKE_${L}_FLAGS} -DWINVER=0x0600 -D_WIN32_WINNT=0x0600")
         # Use Unicode API (although we always use W or A names explicitly)
@@ -134,6 +135,10 @@ find_package(Threads)
 find_package(PkgConfig QUIET)
 
 find_package(CURL ${CURL_MINIMUM} REQUIRED)
+if(TARGET CURL::libcurl)
+    set(CURL_LIBRARIES CURL::libcurl)
+    set(CURL_INCLUDE_DIRS)
+endif()
 
 find_package(ICONV)
 
@@ -297,7 +302,7 @@ else()
     tr_add_external_auto_library(EVENT2 libevent event
         BUILD_IN_SOURCE 1
         CONFIGURE_COMMAND "<SOURCE_DIR>/autogen.sh"
-                  COMMAND "<SOURCE_DIR>/configure" "--prefix=<INSTALL_DIR>" "--disable-shared" ${EVENT2_CONFIGURE_FLAGS})
+                  COMMAND "<SOURCE_DIR>/configure" "--prefix=<INSTALL_DIR>" "--disable-shared" "--disable-openssl" ${EVENT2_CONFIGURE_FLAGS})
 endif()
 
 tr_add_external_auto_library(NATPMP libnatpmp natpmp)
@@ -375,59 +380,131 @@ if(WIN32)
     endforeach()
 endif()
 
+## Compiler standard version
+
 if(CMAKE_VERSION VERSION_LESS "3.1")
-    if(CMAKE_C_COMPILER_ID STREQUAL "GNU" OR CMAKE_C_COMPILER_ID STREQUAL "Clang")
-        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
+    if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu11")
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++17")
+    elseif(CMAKE_C_COMPILER_ID STREQUAL "MSVC")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17")
     endif()
 else()
-    set(CMAKE_C_STANDARD 99)
+    set(CMAKE_C_STANDARD 11)
     set(CMAKE_C_STANDARD_REQUIRED ON)
     set(CMAKE_CXX_STANDARD 17)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
 endif()
 
-if(CMAKE_C_COMPILER_ID STREQUAL "GNU" OR CMAKE_C_COMPILER_ID STREQUAL "Clang")
-    set(NEEDED_COMPILER_FLAGS
-        -Wall
+### Compiler Warnings
+
+set(C_WARNING_FLAGS)
+set(CXX_WARNING_FLAGS)
+
+include(CheckCCompilerFlag)
+include(CheckCXXCompilerFlag)
+
+if(MSVC)
+    set(WARNING_CANDIDATES
+        /W4)
+
+    foreach(FLAG ${WARNING_CANDIDATES})
+        list(APPEND C_WARNING_FLAGS ${FLAG})
+        list(APPEND CXX_WARNING_FLAGS ${FLAG})
+    endforeach()
+else()
+    set(WARNING_CANDIDATES
         -W
+        -Wall
+        -Wextra
         -Wcast-align
+        -Wduplicated-cond
+        -Wexit-time-destructors
+        -Wextra-semi
+        -Wextra-semi-stmt
+        -Wextra-tokens
         -Wfloat-equal
+        -Wgnu
+        -Winit-self
+        -Wint-in-bool-context
+        -Wlogical-op
         -Wmissing-format-attribute
+        -Wnested-externs
+        -Wnull-dereference
         -Wpointer-arith
         -Wredundant-decls
-        -Wundef
+        -Wredundant-move
+        -Wreorder-ctor
+        -Wrestrict
+        -Wreturn-std-move
+        -Wself-assign
+        -Wself-move
+        -Wsemicolon-before-method-body
+        -Wsentinel
+        -Wshadow
+        -Wsign-compare
+        -Wsometimes-uninitialized
+        -Wstrict-prototypes
+        -Wstring-conversion
+        -Wsuggest-destructor-override
+        -Wsuggest-override
+        -Wuninitialized
+        -Wunreachable-code
+        -Wunused
+        -Wunused-const-variable
         -Wunused-parameter
+        -Wunused-result
         -Wwrite-strings)
-
-    if(NOT CMAKE_C_COMPILER_ID STREQUAL "GNU" OR CMAKE_C_COMPILER_VERSION VERSION_GREATER "3.3")
-        list(APPEND NEEDED_COMPILER_FLAGS
-            -Wextra
-            -Winit-self)
-    endif()
 
     if(MINGW)
         # Disable excessive warnings since we're using __USE_MINGW_ANSI_STDIO
         # Hopefully, any potential issues will be spotted on other platforms
-        list(APPEND NEEDED_COMPILER_FLAGS -Wno-format)
+        list(APPEND WARNING_CANDIDATES -Wno-format)
     else()
-        list(APPEND NEEDED_COMPILER_FLAGS -Wformat-security)
+        list(APPEND WARNING_CANDIDATES -Wformat-security)
     endif()
 
-    set(NEEDED_C_COMPILER_FLAGS
-        ${NEEDED_COMPILER_FLAGS}
-        -Winline
-        -Wmissing-declarations
-        -Wnested-externs
-        -Wstrict-prototypes)
-    string(REPLACE ";" " " NEEDED_C_COMPILER_FLAGS_STRING "${NEEDED_C_COMPILER_FLAGS}")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${NEEDED_C_COMPILER_FLAGS_STRING}")
+    set(CMAKE_REQUIRED_FLAGS)
 
-    set(NEEDED_CXX_COMPILER_FLAGS
-        ${NEEDED_COMPILER_FLAGS})
-    string(REPLACE ";" " " NEEDED_CXX_COMPILER_FLAGS_STRING "${NEEDED_CXX_COMPILER_FLAGS}")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${NEEDED_CXX_COMPILER_FLAGS_STRING}")
+    foreach(FLAG -Werror /WX)
+        tr_make_id("${FLAG}" FLAG_ID)
+        set(CACHE_ID "${CMAKE_C_COMPILER_ID}_C_HAS${FLAG_ID}")
+        string(TOLOWER "${CACHE_ID}" CACHE_ID)
+        check_c_compiler_flag(${FLAG} ${CACHE_ID})
+        if (${CACHE_ID})
+            # Make sure the next loop only adds flags that are relevant for a particular language
+            set(CMAKE_REQUIRED_FLAGS ${FLAG})
+            break()
+        endif()
+    endforeach()
+
+    foreach(FLAG ${WARNING_CANDIDATES})
+        tr_make_id("${FLAG}" FLAG_ID)
+
+        # if available, add to C warnings
+        set(CACHE_ID "${CMAKE_C_COMPILER_ID}_C_HAS${FLAG_ID}")
+        string(TOLOWER "${CACHE_ID}" CACHE_ID)
+        check_c_compiler_flag(${FLAG} ${CACHE_ID})
+        if (${CACHE_ID})
+            list(APPEND C_WARNING_FLAGS ${FLAG})
+        endif()
+
+        # if available, add to CXX warnings
+        set(CACHE_ID "${CMAKE_CXX_COMPILER_ID}_CXX_HAS${FLAG_ID}")
+        string(TOLOWER "${CACHE_ID}" CACHE_ID)
+        check_cxx_compiler_flag(${FLAG} ${CACHE_ID})
+        if (${CACHE_ID})
+            list(APPEND CXX_WARNING_FLAGS ${FLAG})
+        endif()
+
+        unset(CACHE_ID)
+        unset(FLAG_ID)
+    endforeach()
+
+    unset(CMAKE_REQUIRED_FLAGS)
 endif()
+
+###
 
 include(LargeFileSupport)
 
@@ -524,18 +601,20 @@ else()
 endif()
 
 if(NOT CMAKE_VERSION VERSION_LESS "3.7.2")
-  message(STATUS "Looking for clang-tidy")
-  find_program(CLANG_TIDY clang-tidy)
-  if (CLANG_TIDY STREQUAL "CLANG_TIDY-NOTFOUND")
-    message(STATUS "Looking for clang-tidy - not found")
-  else()
-    message(STATUS "Looking for clang-tidy - found")
-    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY}")
-  endif()
+    message(STATUS "Looking for clang-tidy")
+    find_program(CLANG_TIDY clang-tidy)
+    if (CLANG_TIDY STREQUAL "CLANG_TIDY-NOTFOUND")
+        message(STATUS "Looking for clang-tidy - not found")
+    else()
+        message(STATUS "Looking for clang-tidy - found")
+        set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY}")
+    endif()
 endif()
 
 if(ENABLE_TESTS)
+    include(CTest)
     enable_testing()
+    add_subdirectory(tests)
 endif()
 
 function(tr_install_web DST_DIR)
