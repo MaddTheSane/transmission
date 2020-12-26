@@ -25,7 +25,7 @@ NSString * generateIconData(NSString * fileExtension, NSUInteger width, NSMutabl
         NSData * iconData = [renderedIcon TIFFRepresentation];
 
         NSDictionary * imgProps = @{
-            (NSString *)kQLPreviewPropertyMIMETypeKey : @"image/png",
+            (NSString *)kQLPreviewPropertyMIMETypeKey : @"image/tiff",
             (NSString *)kQLPreviewPropertyAttachmentDataKey : iconData };
         [allImgProps setObject: imgProps forKey: iconFileName];
     }
@@ -39,6 +39,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
     if (QLPreviewRequestIsCancelled(preview))
         return noErr;
 
+    @autoreleasepool {
     //we need this call to ensure NSApp is initialized (not done automatically for plugins)
     [NSApplication sharedApplication];
 
@@ -179,6 +180,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
     QLPreviewRequestSetDataRepresentation(preview, (__bridge CFDataRef)[htmlString dataUsingEncoding: NSUTF8StringEncoding], kUTTypeHTML, (__bridge CFDictionaryRef)props);
 
     return noErr;
+    }
 }
 
 void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview)
