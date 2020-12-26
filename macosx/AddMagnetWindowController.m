@@ -40,8 +40,6 @@
 - (void) setGroupsMenu;
 - (void) changeGroupValue: (id) sender;
 
-- (void) sameNameAlertDidEnd: (NSAlert *) alert returnCode: (NSInteger) returnCode contextInfo: (void *) contextInfo;
-
 @end
 
 @implementation AddMagnetWindowController
@@ -210,8 +208,12 @@
         [alert addButtonWithTitle: NSLocalizedString(@"Add", "Add torrent -> same name -> button")];
         [alert setShowsSuppressionButton: YES];
 
-        [alert beginSheetModalForWindow: [self window] completionHandler: ^(NSModalResponse returnCode) {
-            [self sameNameAlertDidEnd: alert returnCode: returnCode contextInfo: nil];
+        [alert beginSheetModalForWindow:[self window] completionHandler:^(NSModalResponse returnCode) {
+            if ([[alert suppressionButton] state] == NSOnState)
+                [[NSUserDefaults standardUserDefaults] setBool: NO forKey: @"WarningFolderDataSameName"];
+
+            if (returnCode == NSAlertSecondButtonReturn)
+                [self performSelectorOnMainThread: @selector(confirmAdd) withObject: nil waitUntilDone: NO];
         }];
     }
     else
@@ -301,16 +303,6 @@
     else if ([fDestination isEqualToString: [[GroupsController groups] customDownloadLocationForIndex: previousGroup]])
         [self setDestinationPath: [[NSUserDefaults standardUserDefaults] stringForKey: @"DownloadFolder"] determinationType: TorrentDeterminationAutomatic];
     else;
-}
-
-- (void) sameNameAlertDidEnd: (NSAlert *) alert returnCode: (NSInteger) returnCode contextInfo: (void *) contextInfo
-{
-    if ([[alert suppressionButton] state] == NSOnState)
-        [[NSUserDefaults standardUserDefaults] setBool: NO forKey: @"WarningFolderDataSameName"];
-
-
-    if (returnCode == NSAlertSecondButtonReturn)
-        [self performSelectorOnMainThread: @selector(confirmAdd) withObject: nil waitUntilDone: NO];
 }
 
 @end

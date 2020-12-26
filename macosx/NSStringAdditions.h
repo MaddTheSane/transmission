@@ -38,9 +38,6 @@
 
 + (NSString *) percentString: (CGFloat) progress longDecimals: (BOOL) longDecimals;
 
-+ (NSString *) timeString: (uint64_t) seconds includesTimeRemainingPhrase: (BOOL) includesTimeRemainingPhrase showSeconds: (BOOL) showSeconds;
-+ (NSString *) timeString: (uint64_t) seconds includesTimeRemainingPhrase: (BOOL) includesTimeRemainingPhrase showSeconds: (BOOL) showSeconds maxFields: (NSUInteger) max;
-
 //! simple compare method for strings with numbers (works for IP addresses)
 - (NSComparisonResult) compareNumeric: (NSString *) string;
 

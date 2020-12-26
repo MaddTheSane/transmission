@@ -29,7 +29,6 @@
 
 - (id) initWithPrefsController: (PrefsController *) prefsController;
 - (void) startDownload;
-- (void) failureSheetClosed: (NSAlert *) alert returnCode: (NSInteger) code contextInfo: (void *) info;
 
 @end
 
@@ -118,8 +117,10 @@ BlocklistDownloaderViewController * fBLViewController = nil;
 
     [alert setInformativeText: error];
 
-    [alert beginSheetModalForWindow: [fPrefsController window] completionHandler: ^(NSModalResponse returnCode) {
-        [self failureSheetClosed: alert returnCode: returnCode contextInfo: nil];
+    [alert beginSheetModalForWindow:[fPrefsController window] completionHandler:^(NSModalResponse returnCode) {
+        [[alert window] orderOut: self];
+
+        fBLViewController = nil;
     }];
 }
 
@@ -142,13 +143,6 @@ BlocklistDownloaderViewController * fBLViewController = nil;
     [downloader setViewController: self]; //do before showing the sheet to ensure it doesn't slide out with placeholder text
 
     [NSApp beginSheet: fStatusWindow modalForWindow: [fPrefsController window] modalDelegate: nil didEndSelector: nil contextInfo: nil];
-}
-
-- (void) failureSheetClosed: (NSAlert *) alert returnCode: (NSInteger) code contextInfo: (void *) info
-{
-    [[alert window] orderOut: self];
-
-    fBLViewController = nil;
 }
 
 @end

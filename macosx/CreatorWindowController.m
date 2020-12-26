@@ -36,10 +36,8 @@
 + (NSURL *) chooseFile;
 
 - (void) updateLocationField;
-- (void) createBlankAddressAlertDidEnd: (NSAlert *) alert returnCode: (NSInteger) returnCode contextInfo: (void *) contextInfo;
 - (void) createReal;
 - (void) checkProgress;
-- (void) failureSheetClosed: (NSAlert *) alert returnCode: (NSInteger) code contextInfo: (void *) info;
 
 @end
 
@@ -288,8 +286,16 @@ NSMutableSet *creatorWindowControllerSet = nil;
         [alert addButtonWithTitle: NSLocalizedString(@"Cancel", "Create torrent -> blank address -> button")];
         [alert setShowsSuppressionButton: YES];
 
-        [alert beginSheetModalForWindow: [self window] completionHandler:^(NSModalResponse returnCode) {
-            [self createBlankAddressAlertDidEnd: alert returnCode: returnCode contextInfo: nil];
+        [alert beginSheetModalForWindow:[self window] completionHandler:^(NSModalResponse returnCode) {
+            if ([[alert suppressionButton] state] == NSOnState)
+            {
+                [[NSUserDefaults standardUserDefaults] setBool: NO forKey: @"WarningCreatorBlankAddress"]; //set regardless of private/public
+                if ([fPrivateCheck state] == NSOnState)
+                    [[NSUserDefaults standardUserDefaults] setBool: NO forKey: @"WarningCreatorPrivateBlankAddress"];
+            }
+
+            if (returnCode == NSAlertFirstButtonReturn)
+                [self performSelectorOnMainThread: @selector(createReal) withObject: nil waitUntilDone: NO];
         }];
     }
     else
@@ -459,20 +465,6 @@ NSMutableSet *creatorWindowControllerSet = nil;
     return success ? [panel URLs][0] : nil;
 }
 
-- (void) createBlankAddressAlertDidEnd: (NSAlert *) alert returnCode: (NSInteger) returnCode contextInfo: (void *) contextInfo
-{
-    if ([[alert suppressionButton] state] == NSOnState)
-    {
-        [[NSUserDefaults standardUserDefaults] setBool: NO forKey: @"WarningCreatorBlankAddress"]; //set regardless of private/public
-        if ([fPrivateCheck state] == NSOnState)
-            [[NSUserDefaults standardUserDefaults] setBool: NO forKey: @"WarningCreatorPrivateBlankAddress"];
-    }
-
-
-    if (returnCode == NSAlertFirstButtonReturn)
-        [self performSelectorOnMainThread: @selector(createReal) withObject: nil waitUntilDone: NO];
-}
-
 - (void) createReal
 {
     //check if the location currently exists
@@ -489,9 +481,7 @@ NSMutableSet *creatorWindowControllerSet = nil;
                     [[fLocation URLByDeletingLastPathComponent] path]]];
         [alert setAlertStyle: NSWarningAlertStyle];
 
-        [alert beginSheetModalForWindow: [self window] completionHandler: ^(NSModalResponse returnCode) {
-            //Do nothing?
-        }];
+        [alert beginSheetModalForWindow:[self window] completionHandler:nil];
         return;
     }
 
@@ -512,9 +502,7 @@ NSMutableSet *creatorWindowControllerSet = nil;
                     pathComponents[count-1], pathComponents[count-2]]];
         [alert setAlertStyle: NSWarningAlertStyle];
 
-        [alert beginSheetModalForWindow: [self window] completionHandler: ^(NSModalResponse returnCode) {
-            //Do nothing?
-        }];
+        [alert beginSheetModalForWindow:[self window] completionHandler:nil];
         return;
     }
 
@@ -587,8 +575,9 @@ NSMutableSet *creatorWindowControllerSet = nil;
                     [alert setInformativeText: [NSString stringWithFormat: @"%@ (%d)",
                         NSLocalizedString(@"An unknown error has occurred.", "Create torrent -> failed -> warning"), fInfo->result]];
 
-                [alert beginSheetModalForWindow: [self window] completionHandler: ^(NSModalResponse returnCode) {
-                    [self failureSheetClosed: alert returnCode: returnCode contextInfo: nil];
+                [alert beginSheetModalForWindow:[self window] completionHandler:^(NSModalResponse returnCode) {
+                    [[alert window] orderOut: nil];
+                    [[self window] close];
                 }];
         }
     }
@@ -622,12 +611,6 @@ NSMutableSet *creatorWindowControllerSet = nil;
             [[window standardWindowButton: NSWindowCloseButton] setEnabled: NO];
         }
     }
-}
-
-- (void) failureSheetClosed: (NSAlert *) alert returnCode: (NSInteger) code contextInfo: (void *) info
-{
-    [[alert window] orderOut: nil];
-    [[self window] close];
 }
 
 @end
