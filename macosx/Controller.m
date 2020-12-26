@@ -672,7 +672,7 @@ static void removeKeRangerRansomware()
     //if we were opened from a user notification, do the corresponding action
     NSUserNotification * launchNotification = [notification userInfo][NSApplicationLaunchUserNotificationKey];
     if (launchNotification)
-        [self userNotificationCenter: nil didActivateNotification: launchNotification];
+        [self userNotificationCenter: [NSUserNotificationCenter defaultUserNotificationCenter] didActivateNotification: launchNotification];
 
     //auto importing
     [self checkAutoImportDirectory];
@@ -756,8 +756,8 @@ static void removeKeRangerRansomware()
             alert.informativeText = active == 1
                 ? NSLocalizedString(@"There is an active transfer that will be paused on quit."
                     " The transfer will automatically resume on the next launch.", "Confirm Quit panel -> message")
-                : [NSString stringWithFormat: NSLocalizedString(@"There are %d active transfers that will be paused on quit."
-                    " The transfers will automatically resume on the next launch.", "Confirm Quit panel -> message"), active];
+                : [NSString localizedStringWithFormat: NSLocalizedString(@"There are %ld active transfers that will be paused on quit."
+                    " The transfers will automatically resume on the next launch.", "Confirm Quit panel -> message"), (long)active];
             [alert addButtonWithTitle:NSLocalizedString(@"Quit", "Confirm Quit panel -> button")];
             [alert addButtonWithTitle:NSLocalizedString(@"Cancel", "Confirm Quit panel -> button")];
             
@@ -1663,7 +1663,7 @@ static void removeKeRangerRansomware()
         [panel setMessage: [NSString stringWithFormat: NSLocalizedString(@"Select the new folder for \"%@\".",
                             "Move torrent -> select destination folder"), [(Torrent *)torrents[0] name]]];
     else
-        [panel setMessage: [NSString stringWithFormat: NSLocalizedString(@"Select the new folder for %d data files.",
+        [panel setMessage: [NSString localizedStringWithFormat: NSLocalizedString(@"Select the new folder for %ld data files.",
                             "Move torrent -> select destination folder"), count]];
 
     [panel beginSheetModalForWindow: fWindow completionHandler: ^(NSInteger result) {
@@ -4436,13 +4436,13 @@ static void removeKeRangerRansomware()
 
     if (seeding > 0)
     {
-        NSString * title = [NSString stringWithFormat: NSLocalizedString(@"%d Seeding", "Dock item - Seeding"), seeding];
+        NSString * title = [NSString localizedStringWithFormat: NSLocalizedString(@"%ld Seeding", "Dock item - Seeding"), seeding];
         [menu addItemWithTitle: title action: nil keyEquivalent: @""];
     }
 
     if (downloading > 0)
     {
-        NSString * title = [NSString stringWithFormat: NSLocalizedString(@"%d Downloading", "Dock item - Downloading"), downloading];
+        NSString * title = [NSString localizedStringWithFormat: NSLocalizedString(@"%ld Downloading", "Dock item - Downloading"), downloading];
         [menu addItemWithTitle: title action: nil keyEquivalent: @""];
     }
 

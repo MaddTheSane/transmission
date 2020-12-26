@@ -48,47 +48,47 @@
 "%@ verified" = "%@ doğrulanmış";
 
 /* Inspector -> Peers tab -> peers */
-"%d cache" = "%d önbellek";
+"%ld cache" = "%ld önbellek";
 
 /* Inspector -> Peers tab -> peers */
-"%d Connected" = "%d Bağlı";
+"%ld Connected" = "%ld Bağlı";
 
 /* Inspector -> Peers tab -> peers */
-"%d DHT" = "%d DHT";
+"%ld DHT" = "%ld DHT";
 
 /* Dock item - Downloading */
-"%d Downloading" = "%d İndiriliyor";
+"%ld Downloading" = "%ld İndiriliyor";
 
 /* Inspector -> Peers tab -> peers */
-"%d incoming" = "%d gelen";
+"%ld incoming" = "%ld gelen";
 
 /* Action menu -> upload/download limit
    Status Bar -> speed tooltip */
-"%d KB/s" = "%d KB/s";
+"%ld KB/s" = "%ld KB/s";
 
 /* Inspector -> Peers tab -> peers */
-"%d local discovery" = "%d yerel bulum";
+"%ld local discovery" = "%ld yerel bulum";
 
 /* Inspector -> Peers tab -> peers */
-"%d LTEP" = "%d LTEP";
+"%ld LTEP" = "%ld LTEP";
 
 /* Info options -> global setting */
-"%d minutes" = "%d dakika";
+"%ld minutes" = "%ld dakika";
 
 /* Inspector -> Peers tab -> peers */
-"%d PEX" = "%d PEX";
+"%ld PEX" = "%ld PEX";
 
 /* Create torrent -> info */
 "%d pieces, %@ each" = "%1$d parça, her biri %2$@";
 
 /* Dock item - Seeding */
-"%d Seeding" = "%d Besleniyor";
+"%ld Seeding" = "%ld Besleniyor";
 
 /* Inspector -> Peers tab -> peers */
-"%d tracker" = "%d izleyici";
+"%ld tracker" = "%ld izleyici";
 
 /* Torrent -> status string */
-"%d web seeds" = "%d web beslemeleri";
+"%ld web seeds" = "%ld web beslemeleri";
 
 /* time string */
 "%u days" = "%u gün";
@@ -220,7 +220,7 @@
 "Are you sure you want to remove %@ transfers from the transfer list?" = "%@ aktarımı aktarımlar dizelgesinden çıkarmak istediğinizden emin misiniz?";
 
 /* Remove trackers alert -> title */
-"Are you sure you want to remove %d trackers?" = "%d izleyiciyi kaldırmak istediğinizden emin misiniz?";
+"Are you sure you want to remove %ld trackers?" = "%ld izleyiciyi kaldırmak istediğinizden emin misiniz?";
 
 /* Removal confirm panel -> title */
 "Are you sure you want to remove \"%@\" from the transfer list and trash the data file?" = "\"%@\" aktarımını aktarım dizelgesinden kaldırıp veri dosyalarını Çöp Sepeti'ne taşımak istediğinizden emin misiniz?";
@@ -329,7 +329,7 @@
 "DL" = "İD";
 
 /* Inspector -> Peers tab -> peers */
-"DL from %d" = "%d konumundan İD";
+"DL from %ld" = "%ld konumundan İD";
 
 /* Torrent disk space alert -> button */
 "Do not check disk space again" = "Disk alanını bir daha denetleme";
@@ -377,10 +377,10 @@
 "Downloading blocklist" = "Kara dizelge indiriliyor ";
 
 /* Torrent -> status string */
-"Downloading from %d of %d peers" = "%1$d/%2$d eşten indiriliyor";
+"Downloading from %ld of %ld peers" = "%1$ld/%2$ld eşten indiriliyor";
 
 /* Torrent -> status string */
-"Downloading from %d of 1 peer" = "%d/1 eşten indiriliyor";
+"Downloading from %ld of 1 peer" = "%ld/1 eşten indiriliyor";
 
 /* inspector -> peer table -> header tool tip */
 "Downloading From Peer" = "Eşten İndiriliyor";
@@ -857,10 +857,10 @@
 "Seeding Complete" = "Besleme Tamamlandı";
 
 /* Torrent -> status string */
-"Seeding to %d of %d peers" = "%1$d/%2$d eş besleniyor ";
+"Seeding to %ld of %ld peers" = "%1$ld/%2$ld eş besleniyor ";
 
 /* Torrent -> status string */
-"Seeding to %d of 1 peer" = "%d/1 eş besleniyor ";
+"Seeding to %ld of 1 peer" = "%ld/1 eş besleniyor ";
 
 /* Create torrent -> location sheet -> button
    Create torrent -> select file
@@ -879,7 +879,7 @@
 "Select the name and location for the torrent file." = "Torrent dosyası için ad ve konum seç.";
 
 /* Move torrent -> select destination folder */
-"Select the new folder for %d data files." = "%d veri dosyaları için yeni klasör seç.";
+"Select the new folder for %ld data files." = "%ld veri dosyaları için yeni klasör seç.";
 
 /* Move torrent -> select destination folder */
 "Select the new folder for \"%@\"." = "\"%@\" için yeni klasör seç.";
@@ -999,7 +999,7 @@
 "There are %@ transfers (%@ active)." = "%1$@ aktarım var (%2$@ etkin).";
 
 /* Confirm Quit panel -> message */
-"There are %d active transfers that will be paused on quit. The transfers will automatically resume on the next launch." = "Uygulamadan çıkarken duraklatılacak sümekte olan %d aktarım var. Uygulamayı yeniden açtığınızda aktarımlar kendiliğinden sürecektir.";
+"There are %ld active transfers that will be paused on quit. The transfers will automatically resume on the next launch." = "Uygulamadan çıkarken duraklatılacak sümekte olan %ld aktarım var. Uygulamayı yeniden açtığınızda aktarımlar kendiliğinden sürecektir.";
 
 /* Create torrent -> blank address -> title */
 "There are no tracker addresses." = "İzleyici adresi yok.";
@@ -1032,7 +1032,7 @@
 "This will clear the global statistics displayed by Transmission. Individual transfer statistics will not be affected." = "Genel Transmission istatistikleri silinecektir. Bireysel istatistikler bundan etkilenmeyecek.";
 
 /* Inspector -> tracker table */
-"Tier %d" = "%d. sıra";
+"Tier %ld" = "%ld. sıra";
 
 /* Filter toolbar item -> palette label */
 "Toggle Filter" = "Süzgeci aç/kapa";
@@ -1108,7 +1108,7 @@
 "UL" = "YK";
 
 /* Inspector -> Peers tab -> peers */
-"UL to %d" = "%d için YK";
+"UL to %ld" = "%ld için YK";
 
 /* File Outline -> Menu */
 "Uncheck Selected" = "Seçilinin İmini Kaldır";

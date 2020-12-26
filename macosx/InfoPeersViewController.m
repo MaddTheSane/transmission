@@ -173,43 +173,43 @@
 
     if (anyActive)
     {
-        NSString * connectedText = [NSString stringWithFormat: NSLocalizedString(@"%d Connected", "Inspector -> Peers tab -> peers"),
-                                    connected];
+        NSString * connectedText = [NSString localizedStringWithFormat: NSLocalizedString(@"%ld Connected", "Inspector -> Peers tab -> peers"),
+                                    (long)connected];
 
         if (connected > 0)
         {
             NSMutableArray * upDownComponents = [NSMutableArray arrayWithCapacity: 2];
             if (toUs > 0)
-                [upDownComponents addObject: [NSString stringWithFormat:
-                                        NSLocalizedString(@"DL from %d", "Inspector -> Peers tab -> peers"), toUs]];
+                [upDownComponents addObject: [NSString localizedStringWithFormat:
+                                        NSLocalizedString(@"DL from %ld", "Inspector -> Peers tab -> peers"), (long)toUs]];
             if (fromUs > 0)
-                [upDownComponents addObject: [NSString stringWithFormat:
-                                        NSLocalizedString(@"UL to %d", "Inspector -> Peers tab -> peers"), fromUs]];
+                [upDownComponents addObject: [NSString localizedStringWithFormat:
+                                        NSLocalizedString(@"UL to %ld", "Inspector -> Peers tab -> peers"), (long)fromUs]];
             if ([upDownComponents count] > 0)
                 connectedText = [connectedText stringByAppendingFormat: @": %@", [upDownComponents componentsJoinedByString: @", "]];
 
             NSMutableArray * fromComponents = [NSMutableArray arrayWithCapacity: 7];
             if (tracker > 0)
-                [fromComponents addObject: [NSString stringWithFormat:
-                                        NSLocalizedString(@"%d tracker", "Inspector -> Peers tab -> peers"), tracker]];
+                [fromComponents addObject: [NSString localizedStringWithFormat:
+                                        NSLocalizedString(@"%ld tracker", "Inspector -> Peers tab -> peers"), (long)tracker]];
             if (incoming > 0)
-                [fromComponents addObject: [NSString stringWithFormat:
-                                        NSLocalizedString(@"%d incoming", "Inspector -> Peers tab -> peers"), incoming]];
+                [fromComponents addObject: [NSString localizedStringWithFormat:
+                                        NSLocalizedString(@"%ld incoming", "Inspector -> Peers tab -> peers"), (long)incoming]];
             if (cache > 0)
-                [fromComponents addObject: [NSString stringWithFormat:
-                                        NSLocalizedString(@"%d cache", "Inspector -> Peers tab -> peers"), cache]];
+                [fromComponents addObject: [NSString localizedStringWithFormat:
+                                        NSLocalizedString(@"%ld cache", "Inspector -> Peers tab -> peers"), (long)cache]];
             if (lpd > 0)
-                [fromComponents addObject: [NSString stringWithFormat:
-                                        NSLocalizedString(@"%d local discovery", "Inspector -> Peers tab -> peers"), lpd]];
+                [fromComponents addObject: [NSString localizedStringWithFormat:
+                                        NSLocalizedString(@"%ld local discovery", "Inspector -> Peers tab -> peers"), (long)lpd]];
             if (pex > 0)
-                [fromComponents addObject: [NSString stringWithFormat:
-                                        NSLocalizedString(@"%d PEX", "Inspector -> Peers tab -> peers"), pex]];
+                [fromComponents addObject: [NSString localizedStringWithFormat:
+                                        NSLocalizedString(@"%ld PEX", "Inspector -> Peers tab -> peers"), (long)pex]];
             if (dht > 0)
-                [fromComponents addObject: [NSString stringWithFormat:
-                                        NSLocalizedString(@"%d DHT", "Inspector -> Peers tab -> peers"), dht]];
+                [fromComponents addObject: [NSString localizedStringWithFormat:
+                                        NSLocalizedString(@"%ld DHT", "Inspector -> Peers tab -> peers"), (long)dht]];
             if (ltep > 0)
-                [fromComponents addObject: [NSString stringWithFormat:
-                                        NSLocalizedString(@"%d LTEP", "Inspector -> Peers tab -> peers"), ltep]];
+                [fromComponents addObject: [NSString localizedStringWithFormat:
+                                        NSLocalizedString(@"%ld LTEP", "Inspector -> Peers tab -> peers"), (long)ltep]];
 
             connectedText = [connectedText stringByAppendingFormat: @"\n%@", [fromComponents componentsJoinedByString: @", "]];
         }

@@ -290,7 +290,7 @@ NSMutableSet *creatorWindowControllerSet = nil;
             if ([[alert suppressionButton] state] == NSOnState)
             {
                 [[NSUserDefaults standardUserDefaults] setBool: NO forKey: @"WarningCreatorBlankAddress"]; //set regardless of private/public
-                if ([fPrivateCheck state] == NSOnState)
+                if ([self->fPrivateCheck state] == NSOnState)
                     [[NSUserDefaults standardUserDefaults] setBool: NO forKey: @"WarningCreatorPrivateBlankAddress"];
             }
 

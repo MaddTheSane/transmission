@@ -1116,11 +1116,11 @@ bool trashDataFile(const char * filename, tr_error ** error)
 
             case TR_STATUS_DOWNLOAD:
                 if ([self totalPeersConnected] != 1)
-                    string = [NSString stringWithFormat: NSLocalizedString(@"Downloading from %d of %d peers",
-                                                    "Torrent -> status string"), [self peersSendingToUs], [self totalPeersConnected]];
+                    string = [NSString localizedStringWithFormat: NSLocalizedString(@"Downloading from %ld of %ld peers",
+                                                    "Torrent -> status string"), (long)[self peersSendingToUs], (long)[self totalPeersConnected]];
                 else
-                    string = [NSString stringWithFormat: NSLocalizedString(@"Downloading from %d of 1 peer",
-                                                    "Torrent -> status string"), [self peersSendingToUs]];
+                    string = [NSString localizedStringWithFormat: NSLocalizedString(@"Downloading from %ld of 1 peer",
+                                                    "Torrent -> status string"), (long)[self peersSendingToUs]];
 
                 const NSInteger webSeedCount = fStat->webseedsSendingToUs;
                 if (webSeedCount > 0)
@@ -1129,8 +1129,8 @@ bool trashDataFile(const char * filename, tr_error ** error)
                     if (webSeedCount == 1)
                         webSeedString = NSLocalizedString(@"web seed", "Torrent -> status string");
                     else
-                        webSeedString = [NSString stringWithFormat: NSLocalizedString(@"%d web seeds", "Torrent -> status string"),
-                                                                    webSeedCount];
+                        webSeedString = [NSString localizedStringWithFormat: NSLocalizedString(@"%ld web seeds", "Torrent -> status string"),
+                                         (long)webSeedCount];
 
                     string = [string stringByAppendingFormat: @" + %@", webSeedString];
                 }
@@ -1139,11 +1139,11 @@ bool trashDataFile(const char * filename, tr_error ** error)
 
             case TR_STATUS_SEED:
                 if ([self totalPeersConnected] != 1)
-                    string = [NSString stringWithFormat: NSLocalizedString(@"Seeding to %d of %d peers", "Torrent -> status string"),
-                                                    [self peersGettingFromUs], [self totalPeersConnected]];
+                    string = [NSString localizedStringWithFormat: NSLocalizedString(@"Seeding to %ld of %ld peers", "Torrent -> status string"),
+                              (long)[self peersGettingFromUs], (long)[self totalPeersConnected]];
                 else
-                    string = [NSString stringWithFormat: NSLocalizedString(@"Seeding to %d of 1 peer", "Torrent -> status string"),
-                                                    [self peersGettingFromUs]];
+                    string = [NSString localizedStringWithFormat: NSLocalizedString(@"Seeding to %ld of 1 peer", "Torrent -> status string"),
+                              (long)[self peersGettingFromUs]];
         }
 
         if ([self isStalled])

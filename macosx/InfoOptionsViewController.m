@@ -534,7 +534,7 @@
     {
         const NSInteger globalMin = [[NSUserDefaults standardUserDefaults] integerForKey: @"IdleLimitMinutes"];
         globalIdle = globalMin == 1 ? NSLocalizedString(@"1 minute", "Info options -> global setting")
-            : [NSString localizedStringWithFormat: NSLocalizedString(@"%d minutes", "Info options -> global setting"), globalMin];
+            : [NSString localizedStringWithFormat: NSLocalizedString(@"%ld minutes", "Info options -> global setting"), (long)globalMin];
     }
     else
         globalIdle = NSLocalizedString(@"disabled", "Info options -> global setting");

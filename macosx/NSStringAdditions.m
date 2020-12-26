@@ -38,7 +38,7 @@
 
 + (NSString *) ellipsis
 {
-    return @"\xE2\x80\xA6";
+    return @"…";
 }
 
 - (NSString *) stringByAppendingEllipsis
@@ -49,7 +49,7 @@
 #warning use localizedStringWithFormat: directly when 10.9-only and stringsdict translations are in place
 + (NSString *) formattedUInteger: (NSUInteger) value
 {
-    return [NSString localizedStringWithFormat: @"%lu", value];
+    return [NSString localizedStringWithFormat: @"%lu", (unsigned long)value];
 }
 
 #warning should we take long long instead?
@@ -102,7 +102,7 @@
     if ((int)ratio == TR_RATIO_NA)
         return NSLocalizedString(@"N/A", "No Ratio");
     else if ((int)ratio == TR_RATIO_INF)
-        return @"\xE2\x88\x9E";
+        return @"∞";
     else
     {
         if (ratio < 10.0)

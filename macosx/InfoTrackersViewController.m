@@ -152,7 +152,7 @@
     {
         const NSInteger tier = [item[@"Tier"] integerValue];
         NSString * tierString = tier == -1 ? NSLocalizedString(@"New Tier", "Inspector -> tracker table")
-                                : [NSString stringWithFormat: NSLocalizedString(@"Tier %d", "Inspector -> tracker table"), tier];
+                                : [NSString localizedStringWithFormat: NSLocalizedString(@"Tier %ld", "Inspector -> tracker table"), (long)tier];
 
         if ([fTorrents count] > 1)
             tierString = [tierString stringByAppendingFormat: @" - %@", item[@"Name"]];
@@ -353,8 +353,8 @@
 
         if (removeTrackerCount > 1)
         {
-            [alert setMessageText: [NSString stringWithFormat: NSLocalizedString(@"Are you sure you want to remove %d trackers?",
-                                                                "Remove trackers alert -> title"), removeTrackerCount]];
+            [alert setMessageText: [NSString stringWithFormat: NSLocalizedString(@"Are you sure you want to remove %ld trackers?",
+                                                                "Remove trackers alert -> title"), (long)removeTrackerCount]];
             [alert setInformativeText: NSLocalizedString(@"Once removed, Transmission will no longer attempt to contact them."
                                         " This cannot be undone.", "Remove trackers alert -> message")];
         }

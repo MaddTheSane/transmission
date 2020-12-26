@@ -48,47 +48,47 @@
 "%@ verified" = "%@ проверено";
 
 /* Inspector -> Peers tab -> peers */
-"%d cache" = "%d в кеше";
+"%ld cache" = "%ld в кеше";
 
 /* Inspector -> Peers tab -> peers */
-"%d Connected" = "%d подключено";
+"%ld Connected" = "%ld подключено";
 
 /* Inspector -> Peers tab -> peers */
-"%d DHT" = "%d DHT";
+"%ld DHT" = "%ld DHT";
 
 /* Dock item - Downloading */
-"%d Downloading" = "%d скачивается";
+"%ld Downloading" = "%ld скачивается";
 
 /* Inspector -> Peers tab -> peers */
-"%d incoming" = "%d входящих";
+"%ld incoming" = "%ld входящих";
 
 /* Action menu -> upload/download limit
    Status Bar -> speed tooltip */
-"%d KB/s" = "%d КБ/s";
+"%ld KB/s" = "%ld КБ/s";
 
 /* Inspector -> Peers tab -> peers */
-"%d local discovery" = "%d местных польз.";
+"%ld local discovery" = "%ld местных польз.";
 
 /* Inspector -> Peers tab -> peers */
-"%d LTEP" = "%d LTEP";
+"%ld LTEP" = "%ld LTEP";
 
 /* Info options -> global setting */
-"%d minutes" = "%d мин";
+"%ld minutes" = "%ld мин";
 
 /* Inspector -> Peers tab -> peers */
-"%d PEX" = "%d PEX";
+"%ld PEX" = "%ld PEX";
 
 /* Create torrent -> info */
 "%d pieces, %@ each" = "%1$d частей, %2$@ каждая";
 
 /* Dock item - Seeding */
-"%d Seeding" = "%d раздается";
+"%ld Seeding" = "%ld раздается";
 
 /* Inspector -> Peers tab -> peers */
-"%d tracker" = "%d от трекера";
+"%ld tracker" = "%ld от трекера";
 
 /* Torrent -> status string */
-"%d web seeds" = "%d сайтов раздачи";
+"%ld web seeds" = "%ld сайтов раздачи";
 
 /* time string */
 "%u days" = "%u дн";
@@ -220,7 +220,7 @@
 "Are you sure you want to remove %@ transfers from the transfer list?" = "Вы действительно хотите удалить %@ раздач из списка?";
 
 /* Remove trackers alert -> title */
-"Are you sure you want to remove %d trackers?" = "Выделено трекеров: %d. Вы действительно хотите удалить трекеры? ";
+"Are you sure you want to remove %ld trackers?" = "Выделено трекеров: %ld. Вы действительно хотите удалить трекеры? ";
 
 /* Removal confirm panel -> title */
 "Are you sure you want to remove \"%@\" from the transfer list and trash the data file?" = "Вы действительно хотите удалить «%@» из списка раздач и переместить данные в Корзину?";
@@ -329,7 +329,7 @@
 "DL" = "С";
 
 /* Inspector -> Peers tab -> peers */
-"DL from %d" = "скачиваю от %d";
+"DL from %ld" = "скачиваю от %ld";
 
 /* Torrent disk space alert -> button */
 "Do not check disk space again" = "Не проверять еще раз";
@@ -377,10 +377,10 @@
 "Downloading blocklist" = "Скачиваю черный список";
 
 /* Torrent -> status string */
-"Downloading from %d of %d peers" = "Скачиваю от %1$d из %2$d пользователей";
+"Downloading from %ld of %ld peers" = "Скачиваю от %1$ld из %2$ld пользователей";
 
 /* Torrent -> status string */
-"Downloading from %d of 1 peer" = "Скачиваю от %d из 1 пользователя";
+"Downloading from %ld of 1 peer" = "Скачиваю от %ld из 1 пользователя";
 
 /* inspector -> peer table -> header tool tip */
 "Downloading From Peer" = "Скачиваю от пользователя";
@@ -857,10 +857,10 @@
 "Seeding Complete" = "Раздача завершена";
 
 /* Torrent -> status string */
-"Seeding to %d of %d peers" = "Раздаю к %1$d из %2$d пользователей";
+"Seeding to %ld of %ld peers" = "Раздаю к %1$ld из %2$ld пользователей";
 
 /* Torrent -> status string */
-"Seeding to %d of 1 peer" = "Раздаю к %d из 1 пользователя";
+"Seeding to %ld of 1 peer" = "Раздаю к %ld из 1 пользователя";
 
 /* Create torrent -> location sheet -> button
    Create torrent -> select file
@@ -879,7 +879,7 @@
 "Select the name and location for the torrent file." = "Выберите имя и местоположение для торрент-файла.";
 
 /* Move torrent -> select destination folder */
-"Select the new folder for %d data files." = "Выберите новую папку для %d файлов данных.";
+"Select the new folder for %ld data files." = "Выберите новую папку для %ld файлов данных.";
 
 /* Move torrent -> select destination folder */
 "Select the new folder for \"%@\"." = "Выберите новую папку для «%@».";
@@ -999,7 +999,7 @@
 "There are %@ transfers (%@ active)." = "%1$@ раздач (%2$@ из них активны).";
 
 /* Confirm Quit panel -> message */
-"There are %d active transfers that will be paused on quit. The transfers will automatically resume on the next launch." = "%d активных раздач будут приостановлены. При следующем запуске они будут автоматически возобновлены.";
+"There are %ld active transfers that will be paused on quit. The transfers will automatically resume on the next launch." = "%ld активных раздач будут приостановлены. При следующем запуске они будут автоматически возобновлены.";
 
 /* Create torrent -> blank address -> title */
 "There are no tracker addresses." = "Нет адреса трекеров.";
@@ -1032,7 +1032,7 @@
 "This will clear the global statistics displayed by Transmission. Individual transfer statistics will not be affected." = "Общая статистика Transmission будет сброшена. Статистика индивидуальных раздач сохранится.";
 
 /* Inspector -> tracker table */
-"Tier %d" = "%d уровень";
+"Tier %ld" = "%ld уровень";
 
 /* Filter toolbar item -> palette label */
 "Toggle Filter" = "Показать/скрыть фильтр";
@@ -1108,7 +1108,7 @@
 "UL" = "Р";
 
 /* Inspector -> Peers tab -> peers */
-"UL to %d" = "раздаю к %d";
+"UL to %ld" = "раздаю к %ld";
 
 /* File Outline -> Menu */
 "Uncheck Selected" = "Снять выбор";

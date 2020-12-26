@@ -176,25 +176,25 @@ typedef enum
 
     if ([[NSUserDefaults standardUserDefaults] boolForKey: @"SpeedLimit"])
     {
-        NSString * speedString = [NSString stringWithFormat: @"%@ (%@)", NSLocalizedString(@"%d KB/s", "Status Bar -> speed tooltip"),
+        NSString * speedString = [NSString stringWithFormat: @"%@ (%@)", NSLocalizedString(@"%ld KB/s", "Status Bar -> speed tooltip"),
                                     NSLocalizedString(@"Speed Limit", "Status Bar -> speed tooltip")];
 
         uploadText = [NSString stringWithFormat: speedString,
-                        [[NSUserDefaults standardUserDefaults] integerForKey: @"SpeedLimitUploadLimit"]];
+                      (long)[[NSUserDefaults standardUserDefaults] integerForKey: @"SpeedLimitUploadLimit"]];
         downloadText = [NSString stringWithFormat: speedString,
-                        [[NSUserDefaults standardUserDefaults] integerForKey: @"SpeedLimitDownloadLimit"]];
+                        (long)[[NSUserDefaults standardUserDefaults] integerForKey: @"SpeedLimitDownloadLimit"]];
     }
     else
     {
         if ([[NSUserDefaults standardUserDefaults] boolForKey: @"CheckUpload"])
-            uploadText = [NSString stringWithFormat: NSLocalizedString(@"%d KB/s", "Status Bar -> speed tooltip"),
-                            [[NSUserDefaults standardUserDefaults] integerForKey: @"UploadLimit"]];
+            uploadText = [NSString stringWithFormat: NSLocalizedString(@"%ld KB/s", "Status Bar -> speed tooltip"),
+                            (long)[[NSUserDefaults standardUserDefaults] integerForKey: @"UploadLimit"]];
         else
             uploadText = NSLocalizedString(@"unlimited", "Status Bar -> speed tooltip");
 
         if ([[NSUserDefaults standardUserDefaults] boolForKey: @"CheckDownload"])
-            downloadText = [NSString stringWithFormat: NSLocalizedString(@"%d KB/s", "Status Bar -> speed tooltip"),
-                            [[NSUserDefaults standardUserDefaults] integerForKey: @"DownloadLimit"]];
+            downloadText = [NSString stringWithFormat: NSLocalizedString(@"%ld KB/s", "Status Bar -> speed tooltip"),
+                            (long)[[NSUserDefaults standardUserDefaults] integerForKey: @"DownloadLimit"]];
         else
             downloadText = NSLocalizedString(@"unlimited", "Status Bar -> speed tooltip");
     }

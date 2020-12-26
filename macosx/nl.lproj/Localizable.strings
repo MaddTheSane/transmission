@@ -48,47 +48,47 @@
 "%@ verified" = "%@ geverifieerd";
 
 /* Inspector -> Peers tab -> peers */
-"%d cache" = "%d cache";
+"%ld cache" = "%ld cache";
 
 /* Inspector -> Peers tab -> peers */
-"%d Connected" = "%d verbonden";
+"%ld Connected" = "%ld verbonden";
 
 /* Inspector -> Peers tab -> peers */
-"%d DHT" = "%d DHT";
+"%ld DHT" = "%ld DHT";
 
 /* Dock item - Downloading */
-"%d Downloading" = "%d downloaden";
+"%ld Downloading" = "%ld downloaden";
 
 /* Inspector -> Peers tab -> peers */
-"%d incoming" = "%d inkomend";
+"%ld incoming" = "%ld inkomend";
 
 /* Action menu -> upload/download limit
    Status Bar -> speed tooltip */
-"%d KB/s" = "%d KB/s";
+"%ld KB/s" = "%ld KB/s";
 
 /* Inspector -> Peers tab -> peers */
-"%d local discovery" = "%d lokale ontdekking";
+"%ld local discovery" = "%ld lokale ontdekking";
 
 /* Inspector -> Peers tab -> peers */
-"%d LTEP" = "%d LTEP";
+"%ld LTEP" = "%ld LTEP";
 
 /* Info options -> global setting */
-"%d minutes" = "%d minuten";
+"%ld minutes" = "%ld minuten";
 
 /* Inspector -> Peers tab -> peers */
-"%d PEX" = "%d PEX";
+"%ld PEX" = "%ld PEX";
 
 /* Create torrent -> info */
 "%d pieces, %@ each" = "%1$d fragmenten, %2$@ elk";
 
 /* Dock item - Seeding */
-"%d Seeding" = "%d seeden";
+"%ld Seeding" = "%ld seeden";
 
 /* Inspector -> Peers tab -> peers */
-"%d tracker" = "%d tracker";
+"%ld tracker" = "%ld tracker";
 
 /* Torrent -> status string */
-"%d web seeds" = "%d webseeds";
+"%ld web seeds" = "%ld webseeds";
 
 /* time string */
 "%u days" = "%u dagen";
@@ -220,7 +220,7 @@
 "Are you sure you want to remove %@ transfers from the transfer list?" = "Weet u zeker dat u %@ overdrachten wilt verwijderen van de overdrachtenlijst?";
 
 /* Remove trackers alert -> title */
-"Are you sure you want to remove %d trackers?" = "Weet u zeker dat u %d trackers wilt verwijderen?";
+"Are you sure you want to remove %ld trackers?" = "Weet u zeker dat u %ld trackers wilt verwijderen?";
 
 /* Removal confirm panel -> title */
 "Are you sure you want to remove \"%@\" from the transfer list and trash the data file?" = "Weet u zeker dat u ‘%@’ wilt verwijderen van de overdrachtenlijst en de gegevens naar de prullenmand wilt verplaatsen?";
@@ -329,7 +329,7 @@
 "DL" = "DL";
 
 /* Inspector -> Peers tab -> peers */
-"DL from %d" = "DL van %d";
+"DL from %ld" = "DL van %ld";
 
 /* Torrent disk space alert -> button */
 "Do not check disk space again" = "Ruimte op schijf niet opnieuw controleren";
@@ -377,10 +377,10 @@
 "Downloading blocklist" = "Downloaden van zwarte lijst";
 
 /* Torrent -> status string */
-"Downloading from %d of %d peers" = "Downloaden van %1$d van %2$d peers";
+"Downloading from %ld of %ld peers" = "Downloaden van %1$ld van %2$ld peers";
 
 /* Torrent -> status string */
-"Downloading from %d of 1 peer" = "Downloaden van %d van 1 peer";
+"Downloading from %ld of 1 peer" = "Downloaden van %ld van 1 peer";
 
 /* inspector -> peer table -> header tool tip */
 "Downloading From Peer" = "Downloaden van peer";
@@ -857,10 +857,10 @@
 "Seeding Complete" = "Seeden klaar";
 
 /* Torrent -> status string */
-"Seeding to %d of %d peers" = "Seeden naar %1$d van %2$d peers";
+"Seeding to %ld of %ld peers" = "Seeden naar %1$ld van %2$ld peers";
 
 /* Torrent -> status string */
-"Seeding to %d of 1 peer" = "Seeden naar %d van 1 peer";
+"Seeding to %ld of 1 peer" = "Seeden naar %ld van 1 peer";
 
 /* Create torrent -> location sheet -> button
    Create torrent -> select file
@@ -879,7 +879,7 @@
 "Select the name and location for the torrent file." = "Selecteer de naam en locatie voor het torrentbestand.";
 
 /* Move torrent -> select destination folder */
-"Select the new folder for %d data files." = "Selecteer de nieuwe map voor %d gegevensbestanden.";
+"Select the new folder for %ld data files." = "Selecteer de nieuwe map voor %ld gegevensbestanden.";
 
 /* Move torrent -> select destination folder */
 "Select the new folder for \"%@\"." = "Selecteer de nieuwe map voor \"%@\".";
@@ -999,7 +999,7 @@
 "There are %@ transfers (%@ active)." = "Er zijn %1$@ overdrachten (%2$@ actief).";
 
 /* Confirm Quit panel -> message */
-"There are %d active transfers that will be paused on quit. The transfers will automatically resume on the next launch." = "Er zijn %d actieve overdrachten die gepauzeerd zullen worden bij afsluiten. De overdrachten worden automatisch hervat bij het herstarten.";
+"There are %ld active transfers that will be paused on quit. The transfers will automatically resume on the next launch." = "Er zijn %ld actieve overdrachten die gepauzeerd zullen worden bij afsluiten. De overdrachten worden automatisch hervat bij het herstarten.";
 
 /* Create torrent -> blank address -> title */
 "There are no tracker addresses." = "Er zijn geen trackeradressen.";
@@ -1032,7 +1032,7 @@
 "This will clear the global statistics displayed by Transmission. Individual transfer statistics will not be affected." = "Dit zal de globale statistieken die Transmission toont wissen. Individuele overdrachtstatistieken worden niet gewijzigd.";
 
 /* Inspector -> tracker table */
-"Tier %d" = "Tier %d";
+"Tier %ld" = "Tier %ld";
 
 /* Filter toolbar item -> palette label */
 "Toggle Filter" = "Schakel filter";
@@ -1108,7 +1108,7 @@
 "UL" = "UL";
 
 /* Inspector -> Peers tab -> peers */
-"UL to %d" = "UL naar %d";
+"UL to %ld" = "UL naar %ld";
 
 /* File Outline -> Menu */
 "Uncheck Selected" = "Geselecteerde uitvinken";

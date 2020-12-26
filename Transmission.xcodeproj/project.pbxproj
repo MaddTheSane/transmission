@@ -560,7 +560,7 @@
 		4DCCBB3D09C3D71100D3CABF /* TorrentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TorrentCell.h; sourceTree = "<group>"; };
 		4DDBB71909E16BAE00284745 /* transmissioncli */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = transmissioncli; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE5CC9B0980656F00BE280E /* NSStringAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
-		4DE5CC9C0980656F00BE280E /* NSStringAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
+		4DE5CC9C0980656F00BE280E /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		4DE5CCA50980735700BE280E /* Badger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Badger.h; sourceTree = "<group>"; };
 		4DE5CCA60980735700BE280E /* Badger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Badger.m; sourceTree = "<group>"; };
 		4DE5CCCA0981D9BE00BE280E /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
