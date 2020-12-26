@@ -238,6 +238,62 @@ static void removeKeRangerRansomware()
 @end
 
 @implementation Controller
+{
+    tr_session                      * fLib;
+
+    NSMutableArray                  * fTorrents, * fDisplayedTorrents;
+
+    InfoWindowController            * fInfoController;
+
+    NSUserDefaults                  * fDefaults;
+
+    NSString                        * fConfigDirectory;
+
+    IBOutlet NSWindow               * fWindow;
+    DragOverlayWindow               * fOverlayWindow;
+    IBOutlet TorrentTableView       * fTableView;
+
+    io_connect_t                    fRootPort;
+    NSTimer                         * fTimer;
+
+    IBOutlet NSMenuItem             * fOpenIgnoreDownloadFolder;
+    IBOutlet NSButton               * fActionButton, * fSpeedLimitButton, * fClearCompletedButton;
+    IBOutlet NSTextField            * fTotalTorrentsField;
+
+    StatusBarController             * fStatusBar;
+
+    FilterBarController             * fFilterBar;
+    IBOutlet NSMenuItem             * fNextFilterItem;
+
+    IBOutlet NSMenuItem             * fNextInfoTabItem, * fPrevInfoTabItem;
+
+    IBOutlet NSMenu                 * fSortMenu;
+
+    IBOutlet NSMenu                 * fGroupsSetMenu, * fGroupsSetContextMenu;
+
+    IBOutlet NSMenu                 * fShareMenu, * fShareContextMenu;
+    IBOutlet NSMenuItem             * fShareMenuItem, * fShareContextMenuItem; // remove when dropping 10.6
+
+    QLPreviewPanel                  * fPreviewPanel;
+    BOOL                            fQuitting;
+    BOOL                            fQuitRequested;
+    BOOL                            fPauseOnLaunch;
+
+    Badger                          * fBadger;
+
+    NSMutableArray                  * fAutoImportedNames;
+    NSTimer                         * fAutoImportTimer;
+
+    NSMutableDictionary             * fPendingTorrentDownloads;
+
+    NSMutableSet                    * fAddingTransfers;
+
+    NSMutableSet                    * fAddWindows;
+    URLSheetWindowController        * fUrlSheetController;
+
+    BOOL                            fGlobalPopoverShown;
+    BOOL                            fSoundPlaying;
+}
 
 #warning remove ivars in header when 64-bit only (or it compiles in 32-bit mode)
 @synthesize prefsController = fPrefsController;

@@ -632,8 +632,8 @@
 
             for (NSInteger i = 0; speedLimitActionValue[i] != -1; i++)
             {
-                item = [[NSMenuItem alloc] initWithTitle: [NSString stringWithFormat: NSLocalizedString(@"%d KB/s",
-                        "Action menu -> upload/download limit"), speedLimitActionValue[i]] action: @selector(setQuickLimit:)
+                item = [[NSMenuItem alloc] initWithTitle: [NSString localizedStringWithFormat: NSLocalizedString(@"%ld KB/s",
+                        "Action menu -> upload/download limit"), (long)speedLimitActionValue[i]] action: @selector(setQuickLimit:)
                         keyEquivalent: @""];
                 [item setTarget: self];
                 [item setRepresentedObject: @(speedLimitActionValue[i])];
@@ -646,8 +646,8 @@
 
         item = [menu itemWithTag: ACTION_MENU_LIMIT_TAG];
         [item setState: limit ? NSOnState : NSOffState];
-        [item setTitle: [NSString stringWithFormat: NSLocalizedString(@"Limit (%d KB/s)",
-                            "torrent action menu -> upload/download limit"), [fMenuTorrent speedLimit: upload]]];
+        [item setTitle: [NSString localizedStringWithFormat: NSLocalizedString(@"Limit (%ld KB/s)",
+                            "torrent action menu -> upload/download limit"), (long)[fMenuTorrent speedLimit: upload]]];
 
         item = [menu itemWithTag: ACTION_MENU_UNLIMITED_TAG];
         [item setState: !limit ? NSOnState : NSOffState];

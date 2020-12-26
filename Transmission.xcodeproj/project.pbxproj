@@ -3686,7 +3686,7 @@
 				);
 				INFOPLIST_FILE = "macosx/QuickLookPlugin/QuickLookPlugin-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks @loader_path/../Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.m0k.transmission.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3706,7 +3706,7 @@
 				);
 				INFOPLIST_FILE = "macosx/QuickLookPlugin/QuickLookPlugin-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks @loader_path/../Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.m0k.transmission.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3726,7 +3726,7 @@
 				);
 				INFOPLIST_FILE = "macosx/QuickLookPlugin/QuickLookPlugin-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks @loader_path/../Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.m0k.transmission.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

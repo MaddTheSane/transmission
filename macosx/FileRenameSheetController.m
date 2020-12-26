@@ -60,7 +60,7 @@ typedef void (^CompletionBlock)(BOOL);
     [NSApp beginSheet: [renamer window] modalForWindow: window modalDelegate: self didEndSelector: @selector(sheetDidEnd:returnCode:contextInfo:) contextInfo: (__bridge_retained void *)(renamer)];
 }
 
-+ (void) sheetDidEnd: (NSWindow *) sheet returnCode: (NSInteger) returnCode contextInfo: (void *) contextInfo
++ (void) sheetDidEnd: (NSWindow *) sheet returnCode: (NSModalResponse) returnCode contextInfo: (void *) contextInfo
 {
     FileRenameSheetController * renamer = (__bridge_transfer FileRenameSheetController *)(contextInfo);
     NSParameterAssert([renamer isKindOfClass:[FileRenameSheetController class]]);

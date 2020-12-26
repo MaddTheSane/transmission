@@ -528,7 +528,7 @@
 "License" = "Lizenz";
 
 /* torrent action menu -> upload/download limit */
-"Limit (%d KB/s)" = "höchstens %d KB/s";
+"Limit (%ld KB/s)" = "höchstens %ld KB/s";
 
 /* Save log alert panel -> title */
 "Log Could Not Be Saved" = "Meldungen konnten nicht gesichert werden";

@@ -528,7 +528,7 @@
 "License" = "Licens";
 
 /* torrent action menu -> upload/download limit */
-"Limit (%d KB/s)" = "Begræns (%d KB/s)";
+"Limit (%ld KB/s)" = "Begræns (%ld KB/s)";
 
 /* Save log alert panel -> title */
 "Log Could Not Be Saved" = "Log filen kunne ikke gemmes";

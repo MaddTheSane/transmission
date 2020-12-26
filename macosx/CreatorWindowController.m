@@ -161,7 +161,7 @@ NSMutableSet *creatorWindowControllerSet = nil;
         NSString * fileString;
         NSInteger count = fInfo->fileCount;
         if (count != 1)
-            fileString = [NSString stringWithFormat: NSLocalizedString(@"%@ files", "Create torrent -> info"),
+            fileString = [NSString localizedStringWithFormat: NSLocalizedString(@"%@ files", "Create torrent -> info"),
                             [NSString formattedUInteger: count]];
         else
             fileString = NSLocalizedString(@"1 file", "Create torrent -> info");
@@ -173,7 +173,7 @@ NSMutableSet *creatorWindowControllerSet = nil;
         [fPiecesField setStringValue: [NSString stringWithFormat: NSLocalizedString(@"1 piece, %@", "Create torrent -> info"),
                                                             [NSString stringForFileSize: fInfo->pieceSize]]];
     else
-        [fPiecesField setStringValue: [NSString stringWithFormat: NSLocalizedString(@"%d pieces, %@ each", "Create torrent -> info"),
+        [fPiecesField setStringValue: [NSString localizedStringWithFormat: NSLocalizedString(@"%d pieces, %@ each", "Create torrent -> info"),
                                                             fInfo->pieceCount, [NSString stringForFileSize: fInfo->pieceSize]]];
 
     fLocation = [[fDefaults URLForKey: @"CreatorLocationURL"] URLByAppendingPathComponent: [name stringByAppendingPathExtension: @"torrent"]];

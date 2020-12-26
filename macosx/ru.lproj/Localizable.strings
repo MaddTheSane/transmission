@@ -528,7 +528,7 @@
 "License" = "Лицензия";
 
 /* torrent action menu -> upload/download limit */
-"Limit (%d KB/s)" = "С ограничением (%d КБ/с)";
+"Limit (%ld KB/s)" = "С ограничением (%ld КБ/с)";
 
 /* Save log alert panel -> title */
 "Log Could Not Be Saved" = "Журнал не может быть сохранен";

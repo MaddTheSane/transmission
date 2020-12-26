@@ -138,7 +138,7 @@
             if (fStat.lastAnnouncePeerCount == 1)
                 peerString = NSLocalizedString(@"got 1 peer", "Tracker last announce");
             else
-                peerString = [NSString stringWithFormat: NSLocalizedString(@"got %d peers", "Tracker last announce"),
+                peerString = [NSString localizedStringWithFormat: NSLocalizedString(@"got %d peers", "Tracker last announce"),
                                         fStat.lastAnnouncePeerCount];
             baseString = [baseString stringByAppendingFormat: @" (%@)", peerString];
         }
