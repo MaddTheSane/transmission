@@ -44,6 +44,8 @@
 		4DE5CCCB0981D9BE00BE280E /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DE5CCCA0981D9BE00BE280E /* Defaults.plist */; };
 		4DF0C5AB0899190500DD8943 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF0C5A90899190500DD8943 /* Controller.m */; };
 		4DFBC2DF09C0970D00D5C571 /* Torrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFBC2DE09C0970D00D5C571 /* Torrent.m */; };
+		557416F62596C82200580158 /* libssl.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = C139E3B022BE70FA0007870C /* libssl.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		557416F72596C82500580158 /* libcrypto.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = A27653A714369C5C009D3CCF /* libcrypto.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		55869926257074EC00F77A43 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 55869925257074EC00F77A43 /* libcurl.tbd */; };
 		55869932257074FE00F77A43 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 55869925257074EC00F77A43 /* libcurl.tbd */; };
 		558699542570759E00F77A43 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 55869925257074EC00F77A43 /* libcurl.tbd */; };
@@ -471,6 +473,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				A24F19210A3A796800C9C145 /* Sparkle.framework in Copy Files */,
+				557416F62596C82200580158 /* libssl.dylib in Copy Files */,
+				557416F72596C82500580158 /* libcrypto.dylib in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3014,6 +3018,7 @@
 					.,
 					"third-party/libevent/include",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @executable_path/../lib";
 				PRODUCT_NAME = transmissioncli;
 			};
 			name = Debug;
@@ -3027,6 +3032,7 @@
 					.,
 					"third-party/libevent/include",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @executable_path/../lib";
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-DHAVE_DAEMON",
@@ -3044,6 +3050,7 @@
 					.,
 					"third-party/libevent/include",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @executable_path/../lib";
 				PRODUCT_NAME = "transmission-remote";
 			};
 			name = Debug;
@@ -3168,6 +3175,7 @@
 					.,
 					"third-party/libevent/include",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @executable_path/../lib";
 				PRODUCT_NAME = transmissioncli;
 			};
 			name = Release;
@@ -3343,6 +3351,7 @@
 					.,
 					"third-party/libevent/include",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @executable_path/../lib";
 				PRODUCT_NAME = transmissioncli;
 			};
 			name = "Release - Debug";
@@ -3387,6 +3396,7 @@
 					.,
 					"third-party/libevent/include",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @executable_path/../lib";
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-DHAVE_DAEMON",
@@ -3404,6 +3414,7 @@
 					.,
 					"third-party/libevent/include",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @executable_path/../lib";
 				PRODUCT_NAME = "transmission-remote";
 			};
 			name = "Release - Debug";
@@ -3459,6 +3470,7 @@
 				);
 				INFOPLIST_FILE = "macosx/QuickLookPlugin/QuickLookPlugin-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = qlgenerator;
@@ -3476,6 +3488,7 @@
 				);
 				INFOPLIST_FILE = "macosx/QuickLookPlugin/QuickLookPlugin-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = qlgenerator;
@@ -3493,6 +3506,7 @@
 				);
 				INFOPLIST_FILE = "macosx/QuickLookPlugin/QuickLookPlugin-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = qlgenerator;
@@ -3542,6 +3556,7 @@
 					.,
 					"third-party/libevent/include",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @executable_path/../lib";
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-DHAVE_DAEMON",
@@ -3559,6 +3574,7 @@
 					.,
 					"third-party/libevent/include",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @executable_path/../lib";
 				PRODUCT_NAME = "transmission-remote";
 			};
 			name = Release;
