@@ -98,7 +98,7 @@
 	<key>SUPublicDSAKeyFile</key>
 	<string>sparkle_dsa_pub.pem</string>
 	<key>SUScheduledCheckInterval</key>
-	<string>86400</string>
+	<integer>86400</integer>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
@@ -119,7 +119,9 @@
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>com.apple.ostype</key>
-				<string>TORR</string>
+                <array>
+                    <string>TORR</string>
+                </array>
 				<key>public.filename-extension</key>
 				<array>
 					<string>torrent</string>
