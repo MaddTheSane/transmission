@@ -35,7 +35,6 @@ typedef NS_ENUM(NSInteger, TorrentDeterminationType) {
 #define kTorrentDidChangeGroupNotification @"TorrentDidChangeGroup"
 
 @interface Torrent : NSObject <NSCopying, QLPreviewItem>
-
 - (id) initWithPath: (NSString *) path location: (NSString *) location deleteTorrentFile: (BOOL) torrentDelete
         lib: (tr_session *) lib;
 - (id) initWithTorrentStruct: (tr_torrent *) torrentStruct location: (NSString *) location lib: (tr_session *) lib;

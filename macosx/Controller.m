@@ -244,35 +244,20 @@ static void removeKeRangerRansomware()
     NSMutableArray                  * fTorrents, * fDisplayedTorrents;
 
     InfoWindowController            * fInfoController;
+    MessageWindowController         * fMessageController;
 
     NSUserDefaults                  * fDefaults;
 
     NSString                        * fConfigDirectory;
 
-    IBOutlet NSWindow               * fWindow;
     DragOverlayWindow               * fOverlayWindow;
-    IBOutlet TorrentTableView       * fTableView;
 
     io_connect_t                    fRootPort;
     NSTimer                         * fTimer;
 
-    IBOutlet NSMenuItem             * fOpenIgnoreDownloadFolder;
-    IBOutlet NSButton               * fActionButton, * fSpeedLimitButton, * fClearCompletedButton;
-    IBOutlet NSTextField            * fTotalTorrentsField;
-
     StatusBarController             * fStatusBar;
 
     FilterBarController             * fFilterBar;
-    IBOutlet NSMenuItem             * fNextFilterItem;
-
-    IBOutlet NSMenuItem             * fNextInfoTabItem, * fPrevInfoTabItem;
-
-    IBOutlet NSMenu                 * fSortMenu;
-
-    IBOutlet NSMenu                 * fGroupsSetMenu, * fGroupsSetContextMenu;
-
-    IBOutlet NSMenu                 * fShareMenu, * fShareContextMenu;
-    IBOutlet NSMenuItem             * fShareMenuItem, * fShareContextMenuItem; // remove when dropping 10.6
 
     QLPreviewPanel                  * fPreviewPanel;
     BOOL                            fQuitting;
@@ -294,11 +279,6 @@ static void removeKeRangerRansomware()
     BOOL                            fGlobalPopoverShown;
     BOOL                            fSoundPlaying;
 }
-
-#warning remove ivars in header when 64-bit only (or it compiles in 32-bit mode)
-@synthesize prefsController = fPrefsController;
-@synthesize messageWindowController = fMessageController;
-@synthesize fileWatcherQueue = fFileWatcherQueue;
 
 + (void) initialize
 {
@@ -504,10 +484,10 @@ static void removeKeRangerRansomware()
         fInfoController = [[InfoWindowController alloc] init];
 
         //needs to be done before init-ing the prefs controller
-        fFileWatcherQueue = [[VDKQueue alloc] init];
-        [fFileWatcherQueue setDelegate: self];
+        _fileWatcherQueue = [[VDKQueue alloc] init];
+        [_fileWatcherQueue setDelegate: self];
 
-        fPrefsController = [[PrefsController alloc] initWithHandle: fLib];
+        _prefsController = [[PrefsController alloc] initWithHandle: fLib];
 
         fQuitting = NO;
         fGlobalPopoverShown = NO;
@@ -879,7 +859,7 @@ static void removeKeRangerRansomware()
     [self updateTorrentHistory];
     [fTableView saveCollapsedGroups];
     
-    fFileWatcherQueue = nil;
+    _fileWatcherQueue = nil;
 
     //complete cleanup
     tr_sessionClose(fLib);
@@ -1381,19 +1361,17 @@ static void removeKeRangerRansomware()
     {
         fUrlSheetController = [[URLSheetWindowController alloc] initWithController: self];
 
-        [NSApp beginSheet: [fUrlSheetController window] modalForWindow: fWindow modalDelegate: self didEndSelector: @selector(urlSheetDidEnd:returnCode:contextInfo:) contextInfo: nil];
+        [fWindow beginSheet: fUrlSheetController.window completionHandler:^(NSModalResponse returnCode) {
+            if (returnCode == 1)
+            {
+                NSString * urlString = [fUrlSheetController urlString];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self openURL: urlString];
+                });
+            }
+            fUrlSheetController = nil;
+        }];
     }
-}
-
-- (void) urlSheetDidEnd: (NSWindow *) sheet returnCode: (NSInteger) returnCode contextInfo: (void *) contextInfo
-{
-    if (returnCode == 1)
-    {
-        NSString * urlString = [fUrlSheetController urlString];
-        [self performSelectorOnMainThread: @selector(openURL:) withObject: urlString waitUntilDone: NO];
-    }
-
-    fUrlSheetController = nil;
 }
 
 - (void) createFile: (id) sender
@@ -1863,7 +1841,7 @@ static void removeKeRangerRansomware()
 
 - (void) showPreferenceWindow: (id) sender
 {
-    NSWindow * window = [fPrefsController window];
+    NSWindow * window = [_prefsController window];
     if (![window isVisible])
         [window center];
 
@@ -4696,7 +4674,7 @@ static void removeKeRangerRansomware()
                     break;
 
                 case TR_RPC_SESSION_CHANGED:
-                    [self->fPrefsController rpcUpdatePrefs];
+                    [_prefsController rpcUpdatePrefs];
                     break;
 
                 case TR_RPC_SESSION_CLOSE:

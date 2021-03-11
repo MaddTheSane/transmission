@@ -49,7 +49,25 @@ typedef NS_ENUM(int, addType)
     ADD_CREATED
 };
 
-@interface Controller : NSObject <NSURLDownloadDelegate, NSUserNotificationCenterDelegate, NSPopoverDelegate, NSSharingServiceDelegate, NSSharingServicePickerDelegate, NSSoundDelegate, NSToolbarDelegate, NSWindowDelegate, QLPreviewPanelDataSource, QLPreviewPanelDelegate, VDKQueueDelegate, NSApplicationDelegate>
+@interface Controller : NSObject <NSURLDownloadDelegate, NSUserNotificationCenterDelegate, NSPopoverDelegate, NSSharingServiceDelegate, NSSharingServicePickerDelegate, NSSoundDelegate, NSToolbarDelegate, NSWindowDelegate, QLPreviewPanelDataSource, QLPreviewPanelDelegate, VDKQueueDelegate>
+{
+    IBOutlet NSWindow               * fWindow;
+    IBOutlet TorrentTableView       * fTableView;
+
+    IBOutlet NSMenuItem             * fOpenIgnoreDownloadFolder;
+    IBOutlet NSButton               * fActionButton, * fSpeedLimitButton, * fClearCompletedButton;
+    IBOutlet NSTextField            * fTotalTorrentsField;
+    IBOutlet NSMenuItem             * fNextFilterItem;
+
+    IBOutlet NSMenuItem             * fNextInfoTabItem, * fPrevInfoTabItem;
+
+    IBOutlet NSMenu                 * fSortMenu;
+
+    IBOutlet NSMenu                 * fGroupsSetMenu, * fGroupsSetContextMenu;
+
+    IBOutlet NSMenu                 * fShareMenu, * fShareContextMenu;
+    IBOutlet NSMenuItem             * fShareMenuItem, * fShareContextMenuItem; // remove when dropping 10.6
+}
 
 - (void) openFiles: (NSArray *) filenames addType: (addType) type forcePath: (NSString *) path;
 

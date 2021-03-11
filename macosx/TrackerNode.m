@@ -28,14 +28,13 @@
 {
     tr_tracker_stat fStat;
 }
-@synthesize torrent = fTorrent;
 
 - (id) initWithTrackerStat: (tr_tracker_stat *) stat torrent: (Torrent *) torrent
 {
     if ((self = [super init]))
     {
         fStat = *stat;
-        fTorrent = torrent; //weak reference
+        _torrent = torrent; //weak reference
     }
 
     return self;
